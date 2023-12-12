@@ -42,6 +42,9 @@ const Navbar = () => {
     <form class="form-inline my-2 my-lg-0">
       {/* <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/> */}
       {/* <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Signup</button> */}
+      <Link to="/login" className="btn btn-outline-info my-2 my-sm-0 mx-3">
+            Login
+          </Link>
       <Link to="/signup" className="btn btn-outline-info my-2 my-sm-0">
             Signup
           </Link>
