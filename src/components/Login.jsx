@@ -1,6 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Axios from 'axios';
 
 const Login = () => {
+const [email,setEmail]=useState('');
+const [password,setPassword]=useState('');
+
+const submitHandler = async (e) => {
+  e.preventDefault();
+  try {
+    const { data } = await Axios.post('/api/users/signin', {
+      email,
+      password,
+    });
+    localStorage.setItem('userInfo', JSON.stringify(data));
+    console.log('user sucessfully loged in');
+  } catch (err) {
+    console.log(err);
+  }
+};
   return (
     <div className="login-page">
     <div className="container">
@@ -12,14 +29,15 @@ const Login = () => {
     <div class="signup-form p-4">
                   {/* <!-- Your signup form content goes here --> */}
                   <h2>Login</h2>
-                  <form>
+                  <form onSubmit={submitHandler}>
                       <div style={{margin:"0px"}} class="form-group">
-                          <label style={{fontSize:"18px"}} for="username">Email</label>
-                          <input type="text" class="form-control" id="username" placeholder="Enter your username"/>
+                          <label style={{fontSize:"18px"}} for="email">Email</label>
+                          <input type="email" class="form-control" id="email" placeholder="Enter your email" onChange={(e)=>setEmail(e.target.value)}/>
+
                       </div>
                       <div style={{margin:"0px"}} class="form-group">
-                          <label style={{fontSize:"18px"}} for="email">Password</label>
-                          <input type="email" class="form-control" id="email" placeholder="Enter your email"/>
+                          <label style={{fontSize:"18px"}} for="password">Password</label>
+                          <input type="password" class="form-control" id="password" placeholder="Enter your password" onChange={(e)=>setPassword(e.target.value)}/>
                       </div>
                       
                       <button type="submit" class="btn btn-primary">Login</button>
