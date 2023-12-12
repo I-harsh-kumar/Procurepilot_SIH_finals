@@ -1,5 +1,6 @@
 import React from 'react'
 import { BsDatabaseFillCheck } from "react-icons/bs";
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -9,7 +10,7 @@ const Navbar = () => {
     <BsDatabaseFillCheck style={{ fontSize: '1.5em' }} className='mx-1'/>
     
   </a>
-  <a class="navbar-brand" href="#">TenderTrackr</a>
+  <a class="navbar-brand" href="#">Procurepilot</a>
   
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -39,8 +40,11 @@ const Navbar = () => {
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-      <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+      {/* <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/> */}
+      {/* <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Signup</button> */}
+      <Link to="/signup" className="btn btn-outline-info my-2 my-sm-0">
+            Signup
+          </Link>
     </form>
   </div>
 </nav>
