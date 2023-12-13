@@ -3,6 +3,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const userRouter = require("./routes/userRoutes.js");
+const gfrRouter=require("./routes/gfrRoutes.js");
 
 dotenv.config();
 mongoose
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use("/api/users", userRouter);
+app.use("/api/gfr", gfrRouter);
 
 
 app.use((err, req, res, next) => {

@@ -32,12 +32,12 @@ const submitHandler = async (e) => {
                   <form onSubmit={submitHandler}>
                       <div style={{margin:"0px"}} class="form-group">
                           <label style={{fontSize:"18px"}} for="email">Email</label>
-                          <input type="email" class="form-control" id="email" placeholder="Enter your email" onChange={(e)=>setEmail(e.target.value)}/>
+                          <input type="email" class="form-control" id="email" placeholder="Enter your email" onChange={(e)=>setEmail(e.target.value)} required/>
 
                       </div>
                       <div style={{margin:"0px"}} class="form-group">
                           <label style={{fontSize:"18px"}} for="password">Password</label>
-                          <input type="password" class="form-control" id="password" placeholder="Enter your password" onChange={(e)=>setPassword(e.target.value)}/>
+                          <input type="password" class="form-control" id="password" placeholder="Enter your password" onChange={(e)=>setPassword(e.target.value)} required/>
                       </div>
                       
                       <button type="submit" class="btn btn-primary">Login</button>
