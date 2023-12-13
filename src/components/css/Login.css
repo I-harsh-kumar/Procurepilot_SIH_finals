@@ -1,162 +1,51 @@
-.logo-child {
-    width: 4.49rem;
-    height: 4.48rem;
-  }
-  .logo-child,
-  .procurepilot {
-    position: relative;
-  }
-  .logo {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 0.78rem;
-  }
-  .charting-compliance-empowerin {
-    position: relative;
-    font-size: 0.88rem;
-    font-weight: 500;
-  }
-  .logo-parent {
-    position: absolute;
-    top: calc(50% - 362px);
-    left: calc(50% - 606px);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: flex-start;
-    gap: 0.42rem;
-  }
-  .group-child {
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 11.31px;
-    background-color: #f4f4f4;
-    width: 38.99rem;
-    height: 43.88rem;
-  }
-  .group-inner,
-  .group-item {
-    position: absolute;
-    top: 13.64rem;
-    left: 5.71rem;
-    border-radius: 5.65px;
-    background-color: var(--color-gainsboro);
-    width: 27.5rem;
-    height: 3.89rem;
-  }
-  .group-inner {
-    top: 21.91rem;
-  }
-  .password {
-    top: 20.08rem;
-    left: 5.71rem;
-  }
-  .forgot-password,
-  .password,
-  .password1 {
-    position: absolute;
-    font-weight: 500;
-  }
-  .forgot-password {
-    top: 27.86rem;
-    left: 5.71rem;
-    text-decoration: underline;
-  }
-  .password1 {
-    top: 23.26rem;
-    left: 6.71rem;
-    color: var(--foundation-blackgrey-light-active);
-  }
-  .login {
-    position: absolute;
-    top: 4.69rem;
-    left: 5.65rem;
-    font-size: 2.3rem;
-    font-weight: 600;
-    font-family: var(--font-lato);
-  }
-  .sign-in {
-    position: relative;
-    font-weight: 500;
-  }
-  .sign-in-wrapper {
-    position: absolute;
-    top: 32.45rem;
-    left: 5.71rem;
-    border-radius: 11.31px;
-    background-color: var(--foundation-blue-b500);
-    width: 7.45rem;
-    height: 3.07rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 0.29rem 1.06rem;
-    box-sizing: border-box;
-    font-size: 1.71rem;
-    color: var(--foundation-blue-b50);
-  }
-  .e {
-    text-transform: uppercase;
-  }
-  .nter-your-credentials {
-    text-transform: lowercase;
-  }
-  .enter-your-credentials-container {
-    position: absolute;
-    top: 8.41rem;
-    left: 5.83rem;
-    font-size: 0.89rem;
-    font-family: var(--font-lato);
-  }
-  .email,
-  .username {
-    position: absolute;
-    top: 11.78rem;
-    left: 5.71rem;
-    font-weight: 500;
-  }
-  .email {
-    top: 14.98rem;
-    left: 6.6rem;
-    font-size: 1.14rem;
-    color: var(--foundation-blackgrey-light-active);
-  }
-  .rectangle-parent {
-    position: absolute;
-    top: 10.06rem;
-    left: 43.56rem;
-    width: 38.99rem;
-    height: 43.88rem;
-    font-size: 0.94rem;
-    color: var(--color-black);
-  }
-  .interface-essentialclose-rect-icon {
-    position: absolute;
-    top: 12.75rem;
-    left: calc(50% + 523px);
-    width: 2rem;
-    height: 2rem;
-  }
-  .administrator-portal {
-    position: absolute;
-    top: calc(50% - 36px);
-    left: 7.25rem;
-    font-size: 3rem;
-    font-weight: 600;
-  }
+
+body {
+  
+  background-color: #0047b3;
+  margin: 0;
+} 
   .login-page {
     position: relative;
-    background-color: #0047b3;
+    
     width: 100%;
-    height: 64rem;
+    /* height: 100%; */
     overflow: hidden;
     text-align: left;
-    font-size: 3.34rem;
+    /* font-size: 3.34rem; */
     color: var(--color-white);
     font-family: var(--font-poppins);
   }
+  .input-wrapper {
+    --padding: 16px;
+    --focus-color: black;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
   
+  input {
+    padding: var(--padding);
+    border: 2px solid gray;
+    outline: none;
+    width: 100%;
+    height: 45px;
+    border-radius: 6px;
+  }
+  .placeholder {
+    position: absolute;
+    background-color: white;
+    color: gray;
+    left: var(--padding);
+    padding: 0 4px;
+    transition: all 0.2s ease-in;
+  }
+  
+  input:is(:focus, :valid) {
+    border: 2px solid var(--focus-color);
+  }
+  
+  input:is(:focus, :valid) + .placeholder {
+    transform: translatey(calc(-1 * var(--padding) - 3px));
+    font-size: 14px;
+    color: var(--focus-color);
+  }
