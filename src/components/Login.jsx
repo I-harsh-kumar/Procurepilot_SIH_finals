@@ -21,14 +21,25 @@ const submitHandler = async (e) => {
   return (
     <div className="login-page">
     <div className="container">
-  <div className="row mt-5">
-    <div className="col-7">
-    <h1 style={{color:"white"}}>Procurpilot</h1>
+    <div className="row" style={{marginTop:"80px"}}>
+          <div className="col-sm-12 col-lg-7 p-3">
+    <h1 style={{ color: "white" }}>Procurpilot</h1>
+            <p style={{ color: "white", marginTop: "20px",paddingRight:'30px' }}>
+            Welcome to Procurpilot, the secure platform designed for government authorized officials. Our system streamlines access to crucial guidelines and tenders, providing a centralized repository for efficient document management. From the login/signup page to the tender scoring process. 
+  </p>
+  <p style={{ color: "white", marginTop: "20px",paddingRight:'30px' }}>
+  Procurpilot empowers officials with seamless navigation and robust features. Stay informed with our new guidelines notifications and explore the Guidelines Repository, ensuring a comprehensive resource for managing and accessing essential information. </p>
+  <p style={{ color: "white", marginTop: "20px",paddingRight:'30px' }}>
+  Login now to experience the convenience of Procurpilot in the realm of government document management.</p>
     </div>
-    <div className="col-5" style={{backgroundColor:"white"}}>
-    <div class="signup-form p-4">
+    <div
+            className="col-sm-12 col-lg-5"
+            style={{ backgroundColor: "white", borderRadius:"25px", padding: "0 10px" }}
+            
+          >
+    <div class="signup-form p-5">
                   {/* <!-- Your signup form content goes here --> */}
-                  <h2>Login</h2>
+                  <h2 className="mb-5">Login</h2>
                   <form onSubmit={submitHandler}>
                       <div style={{margin:"0px"}} class="form-group">
                           <label style={{fontSize:"18px"}} for="email">Email</label>
