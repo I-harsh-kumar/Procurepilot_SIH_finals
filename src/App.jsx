@@ -6,6 +6,7 @@ import Main from './components/Main'
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Admin from './components/Admin';
+import Admindashboard from './components/Admindashboard';
 const App = () => {
   return (
     <div>
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/admindashboard" element={<Admindashboard/>}/>
         </Routes>
       </div>
     </Router>
