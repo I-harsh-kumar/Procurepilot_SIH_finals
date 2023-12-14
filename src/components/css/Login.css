@@ -1,7 +1,7 @@
 
 body {
   
-  background-color: #0047b3;
+  background-color: #ffffff;
   margin: 0;
 } 
   .login-page {
@@ -14,7 +14,15 @@ body {
     /* font-size: 3.34rem; */
     color: var(--color-white);
     font-family: var(--font-poppins);
+   
   }
+
+.vertical-line {
+  border-left: 1px solid goldenrod; /* Color of the vertical line */
+  height: 100%; /* Adjust the height based on your layout */
+  margin-left: 15px; /* Adjust the margin as needed for spacing */
+  margin-right: 15px; /* Adjust the margin as needed for spacing */
+}
   .input-wrapper {
     --padding: 16px;
     --focus-color: black;
@@ -49,3 +57,67 @@ body {
     font-size: 14px;
     color: var(--focus-color);
   }
+
+
+  .circle {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    border: 0.3px solid #1c1c1c;
+    background-color: none;
+    position: absolute;
+  }
+  
+  #lc1 {
+    left: -120px;
+    bottom: -80px;
+  }
+  
+  #lc2 {
+    left: -70px;
+    bottom: -160px;
+  }
+  @media (max-width: 767px) {
+    .circle {
+      display: none;
+    }
+  }
+
+/* right circles */
+/* 
+:root {
+  --circle-size: 20%;
+  --circle-padding: 20px;
+  --circle-border: 0.3px solid #1c1c1c;
+  --circle-position: absolute;
+  --circle-right: 5%;
+}
+
+.responsive-circle {
+  width: var(--circle-size);
+  padding-bottom: var(--circle-size);
+  border-radius: 50%;
+  border: var(--circle-border);
+  position: var(--circle-position);
+  right: var(--circle-right);
+}
+
+.rcircle1 {
+  background-color: black;
+  bottom: 5%;
+}
+
+.rcircle2 {
+  background-color: none;
+  bottom: calc(5% + var(--circle-padding));
+}
+
+.rcircle3 {
+  background-color: none;
+  bottom: calc(5% + 2 * var(--circle-padding));
+}
+
+.rcircle4 {
+  background-color: none;
+  bottom: calc(5% + 3 * var(--circle-padding));
+} */
