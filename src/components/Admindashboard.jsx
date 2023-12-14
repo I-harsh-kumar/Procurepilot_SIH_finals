@@ -1,22 +1,7 @@
-import React, { useEffect,useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './css/dashboard.css';
 import Axios from "axios";
-
-
 const App = () => {
-  const [gfrData, setGfrData] = useState([]);
-  const fetchData = async () => {
-    try {
-      const { data } = await Axios.get('/api/gfr/getGfrRule');
-      setGfrData(data.rules);
-      console.log('data:',data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  useEffect(() => {
-    fetchData();
-  },[]);
   const data = [
     {
       title: 'Requirement of Split AC Tender',
@@ -80,6 +65,20 @@ const App = () => {
  
     },
   ]
+
+   const [gfrData, setGfrData] = useState([]);
+  const fetchData = async () => {
+    try {
+      const { data } = await Axios.get('/api/gfr/getGfrRule');
+      setGfrData(data.rules);
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    fetchData();
+  },[]);
   const [searchResults, setSearchResults] = useState(arr);
   const [searchResults1, setSearchResults1] = useState(arr1);
   const [searchCategory, setSearchCategory] = useState('');
@@ -178,8 +177,8 @@ const App = () => {
               </tr>
             </thead>
             <tbody>
-              {searchResults.length > 0 ? (
-                searchResults.map((row, index) => (
+              {gfrData.length > 0 ? (
+                gfrData.map((row, index) => (
                   <tr
                     key={index}
                     style={{ color: 'white' }}
@@ -222,7 +221,7 @@ const App = () => {
         <div className="col-sm-12 col-lg-4 mb-5">
     <h3 style={{background:"white"}}>Recently Uploaded Documents</h3>
        
-          {gfrData.map((item, index) => (
+          {data.map((item, index) => (
 
             <div className="custom-table" key={index}>
                  <br/>
@@ -305,7 +304,7 @@ const App = () => {
               <tr>
                 <th scope="col">Rule</th>
                 <th scope="col">Title</th>
-                 <th scope="col">Description</th>
+                {/* <th scope="col">Description</th> */}
                 <th scope="col">Category</th>
                 <th scope="col">Updated At</th>
                 <th scope="col">Updated By</th>
