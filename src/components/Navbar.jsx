@@ -1,11 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BsDatabaseFillCheck } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+
+  const openNav = () => {
+    setSidebarOpen(true);
+  };
+
+  const closeNav = () => {
+    setSidebarOpen(false);
+  };
   return (
     <>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div>
+      <div id="mySidenav" className={`sidenav ${isSidebarOpen ? 'open' : ''}`}>
+        <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
+        <a href="#">Manage Repository</a>
+        <a href="#">Version Control</a>
+        <a href="#">Guidelines</a>
+        <a href="#">Get Tender Score</a>
+        <a href="#">Recent Guidelines</a>
+        <a href="#">Profile</a>
+        <a href="#">Logout</a>
+
+      </div>
+
+      <span style={{ fontSize: '20px', cursor: 'pointer' }} onClick={openNav}>&#9776;</span>
+    </div>
     <a class="navbar-brand" href="#">
     <BsDatabaseFillCheck style={{ fontSize: '1.5em' }} className='mx-1'/>
     
@@ -18,11 +42,14 @@ const Navbar = () => {
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
+    <li className="nav-item active">
+            {/* Use the Link component for navigation */}
+            <Link className="nav-link" to="/admin">Admin <span className="sr-only">(current)</span></Link>
+          </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+      <Link to="/admindashboard" className="nav-link">
+  Dashboard
+</Link>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
