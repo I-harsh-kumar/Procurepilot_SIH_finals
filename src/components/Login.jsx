@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import Axios from "axios";
+import React, { useState } from 'react'
+import Axios from 'axios';
+import "./css/login.css"
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -19,94 +20,79 @@ const Login = () => {
     }
   };
   return (
-    <div className="login-page">
-      <div className="container">
-        <div className="row" style={{ marginTop: "80px" }}>
-          <div className="col-sm-12 col-lg-7 p-3">
-            <h1 style={{ color: "white" }}>Procurpilot</h1>
-            <p
-              style={{
-                color: "white",
-                marginTop: "20px",
-                paddingRight: "30px",
-              }}
-            >
-              Welcome to Procurpilot, the secure platform designed for
-              government authorized officials. Our system streamlines access to
-              crucial guidelines and tenders, providing a centralized repository
-              for efficient document management. From the login/signup page to
-              the tender scoring process.
-            </p>
-            <p
-              style={{
-                color: "white",
-                marginTop: "20px",
-                paddingRight: "30px",
-              }}
-            >
-              Procurpilot empowers officials with seamless navigation and robust
-              features. Stay informed with our new guidelines notifications and
-              explore the Guidelines Repository, ensuring a comprehensive
-              resource for managing and accessing essential information.{" "}
-            </p>
-            <p
-              style={{
-                color: "white",
-                marginTop: "20px",
-                paddingRight: "30px",
-              }}
-            >
-              Login now to experience the convenience of Procurpilot in the
-              realm of government document management.
-            </p>
-          </div>
-          <div
-            className="col-sm-12 col-lg-5"
-            style={{
-              backgroundColor: "white",
-              borderRadius: "25px",
-              padding: "0 10px",
-            }}
-          >
-            <div class="signup-form p-5">
-              {/* <!-- Your signup form content goes here --> */}
-              <h2 className="mb-5">Login</h2>
-              <form onSubmit={submitHandler}>
-                <div class="input-wrapper mb-3">
-                  <input
-                    type="text"
-                    id="email"
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  ></input>
-                  <label for="email" class="placeholder">
-                    Email
-                  </label>
-                </div>
-                <div class="input-wrapper mb-5">
-                  <input
-                    type="password"
-                    id="password"
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  ></input>
-                  <label for="password" class="placeholder">
-                    Password
-                  </label>
-                </div>
-
-                <div style={{ display: "flex", justifyContent: "center" }}>
-                  <button type="submit" class="btn btn-outline-primary ">
-                    Login
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="login-page ">
+    <div className="container">
+    <div className="row" style={{marginTop:"48px"}}>
+          <div className="col-sm-12 col-md-7 col-lg-7 p-0" style={{ position: 'relative', textAlign: 'center'}}>
+          
+         <img style={{width:"500px", height:"500px"}} src= {'/public/login.jpg'} alt='image'/>
+        
     </div>
-  );
-};
+
+    <div
+            className="col-sm-12 col-md-5 col-lg-5 "
+            style={{ backgroundColor: "white",padding: "0 10px" }}
+            
+          >
+            
+    <div class="signup-form p-5">
+                  {/* <!-- Your signup form content goes here --> */}
+                  <h1 className="mb-3">Hey <br />Welcome Back !</h1>
+                  <p >Enter your credentials to Login</p> <br />
+                  
+                  <form onSubmit={submitHandler}>
+                    
+                  <div class="input-wrapper mb-3">
+      <input type='text' id="email" onChange={(e)=>setEmail(e.target.value)} required ></input>
+      <label 
+             for="email"
+             class='placeholder'>
+       Email
+      </label>
+    </div>
+    <div class="input-wrapper">
+      <input type="password" id="password"  onChange={(e)=>setPassword(e.target.value)} required ></input>
+      <label 
+             for="password"
+             class='placeholder'>
+        Password
+      </label>
+    </div>
+             
+    <div>
+    <div>
+    <a href="" className='mt-2' style={{textDecoration:'underline', float:"right"}}>forget password</a>           
+    </div> 
+    </div>
+    
+    </form>
+  <button  type="submit" class=" mt-5 btn btn-outline-primary ">
+      Login 
+    </button> 
+                  <p style={{marginTop: "10%"}}>Dont have an account?<a href="" style={{textDecoration: "underline"}}>Signup</a> </p>
+                
+                  <div style={{width:"200px", height:"200px", borderRadius:"50%", border: "0.3px solid #1c1c1c", backgroundColor:"black", position:"absolute",right:'-100px',bottom:'-100px' }}></div> 
+                  <div style={{width:"200px", height:"200px", borderRadius:"50%", border: "0.3px solid #1c1c1c", backgroundColor:"none", position:"absolute",right:'-100px',bottom:'-90px' }}></div> 
+                  <div style={{width:"200px", height:"200px", borderRadius:"50%", border: "0.3px solid #1c1c1c", backgroundColor:"none", position:"absolute",right:'-100px',bottom:'-80px' }}></div> 
+                  <div style={{width:"200px", height:"200px", borderRadius:"50%", border: "0.3px solid #1c1c1c", backgroundColor:"none", position:"absolute",right:'-100px',bottom:'-70px' }}></div> 
+
+                
+                  
+                  {/* <div className="responsive-circle rcircle1"></div>
+                  <div className="responsive-circle rcircle2"></div>
+                  <div className="responsive-circle rcircle3"></div>
+                  <div className="responsive-circle rcircle4"></div> */}
+
+              </div>
+    </div>
+  </div>
+  </div>
+  <div id="lc1" className="circle"></div>
+  <div id="lc2" className="circle"></div>
+ 
+  
+  </div>
+  )
+}
 
 export default Login;

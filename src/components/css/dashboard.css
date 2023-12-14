@@ -192,7 +192,14 @@ table {
     margin-bottom: 5px;
     padding-bottom: 5px;
   }
+  .approval-control-main-div {
+    display: flex;
+  }
   
-  /* Set a specific width for the description column */
- 
+  @media (max-width: 700px) {
+    .approval-control-main-div {
+      display: block; /* Change to whatever display property you want for smaller screens */
+    }
+  }
+  
   

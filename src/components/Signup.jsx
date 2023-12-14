@@ -30,15 +30,9 @@ const Signup = () => {
     <div className="login-page">
       <div className="container">
         <div className="row" style={{marginTop:"80px"}}>
-          <div className="col-sm-12 col-lg-7 p-3">
-            <h1 style={{ color: "white" }}>Procurpilot</h1>
-            <p style={{ color: "white", marginTop: "20px",paddingRight:'30px' }}>
-            Welcome to Procurpilot, the secure platform designed for government authorized officials. Our system streamlines access to crucial guidelines and tenders, providing a centralized repository for efficient document management. From the login/signup page to the tender scoring process. 
-  </p>
-  <p style={{ color: "white", marginTop: "20px",paddingRight:'30px' }}>
-  Procurpilot empowers officials with seamless navigation and robust features. Stay informed with our new guidelines notifications and explore the Guidelines Repository, ensuring a comprehensive resource for managing and accessing essential information. </p>
-  <p style={{ color: "white", marginTop: "20px",paddingRight:'30px' }}>
-  Sign up now to experience the convenience of Procurpilot in the realm of government document management.</p>
+          <div className="col-sm-12 col-lg-7 p-3" >
+            
+          <img style={{width:"600px", height:"400px"}} src= {'/public/Signup.png'} alt='image'/>
           </div>
           <div
             className="col-sm-12 col-lg-5"
@@ -47,7 +41,8 @@ const Signup = () => {
           >
             <div class="signup-form p-5">
               {/* <!-- Your signup form content goes here --> */}
-              <h2 className="mb-5">Sign Up</h2>
+              <h2 className="mb-2">Welcome</h2>
+              <p >Enter your credentials to Signup</p> <br />
               <form onSubmit={submitHandler}>
               <div class="input-wrapper mb-3">
       <input type='text' id="username" onChange={(e) => setName(e.target.value)} required ></input>
@@ -87,10 +82,19 @@ const Signup = () => {
     </button>
   </div>
               </form>
+
+              <div style={{width:"200px", height:"200px", borderRadius:"50%", border: "0.3px solid #1c1c1c", backgroundColor:"black", position:"absolute",right:'-100px',bottom:'-100px' }}></div> 
+                  <div style={{width:"200px", height:"200px", borderRadius:"50%", border: "0.3px solid #1c1c1c", backgroundColor:"none", position:"absolute",right:'-100px',bottom:'-90px' }}></div> 
+                  <div style={{width:"200px", height:"200px", borderRadius:"50%", border: "0.3px solid #1c1c1c", backgroundColor:"none", position:"absolute",right:'-100px',bottom:'-80px' }}></div> 
+                  <div style={{width:"200px", height:"200px", borderRadius:"50%", border: "0.3px solid #1c1c1c", backgroundColor:"none", position:"absolute",right:'-100px',bottom:'-70px' }}></div> 
+
+                
             </div>
           </div>
         </div>
       </div>
+      <div id="lc1" className="circle"></div>
+  <div id="lc2" className="circle"></div>
     </div>
   );
 };
