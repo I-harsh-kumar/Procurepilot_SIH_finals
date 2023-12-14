@@ -45,10 +45,37 @@ const App = () => {
  
     },
   ] 
+
+  const arr1 = [
+   
+    { "rule": "142",
+    "heading": "Universal Procurement Guidelines for Ministries and Departments",
+    "description": "This chapter contains the general rules applicable to all Ministries or Departments, regarding procurement of goods required for use in the public service. Detailed instructions relating to procurement of goods may be issued by the procuring departments broadly in conformity with the general rules contained in this Chapter.", 
+    "createdAt":"12.12.2024",
+    "updatedBy":"Suraj Sharma",
+    "category": "E-procurement"
+ 
+    },
+    { "rule": "143",
+    "heading": "Universal Procurement Guidelines for Ministries and Departments",
+    "description": "This chapter contains the general rules applicable to all Ministries or Departments, regarding procurement of goods required for use in the public service. Detailed instructions relating to procurement of goods may be issued by the procuring departments broadly in conformity with the general rules contained in this Chapter.", 
+    "createdAt":"12.12.2024",
+    "updatedBy":"Suraj Sharma",
+    "category": "E-procurement"
+ 
+    },
+  ]
   const [searchResults, setSearchResults] = useState(arr);
+  const [searchResults1, setSearchResults1] = useState(arr1);
   const [searchCategory, setSearchCategory] = useState('');
+  const [searchCategory1, setSearchCategory1] = useState('');
+
+  const [searchTag1, setSearchTag1] = useState('');
   const [searchTag, setSearchTag] = useState('');
+
   const [searchRule, setSearchRule] = useState('');
+  const [searchRule1, setSearchRule1] = useState('');
+
 
   const handleSearch = () => {
     const filteredResults = arr.filter(
@@ -58,6 +85,15 @@ const App = () => {
         item.rule.includes(searchRule)
     );
     setSearchResults(filteredResults);
+  };
+  const handleSearch1 = () => {
+    const filteredResults = arr.filter(
+      (item) =>
+        item.category.includes(searchCategory1) &&
+        item.heading.includes(searchTag1) &&
+        item.rule.includes(searchRule1)
+    );
+    setSearchResults1(filteredResults);
   };
 
   const handleRowClick = (rule) => {
@@ -152,8 +188,9 @@ const App = () => {
                       {row.category}
                     </td>
                     <td data-label="Action" style={{ wordWrap: 'break-word' }}>
-<button class="btn-dark mx-2" style={{width:"70px",height:"25px",fontSize:"12px",borderRadius:"5px"}} type="submit">View</button>
-<button class="btn-primary" style={{width:"70px",height:"25px",fontSize:"12px",borderRadius:"5px"}} type="submit">Edit</button>
+<button class="btn-dark mx-1" style={{width:"45px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">View</button>
+<button class="btn-primary mx-1" style={{width:"45px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">Edit</button>
+<button class="btn-danger" style={{width:"45px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">Delete</button>
                       
                     </td>
                   </tr>
@@ -167,7 +204,7 @@ const App = () => {
           </table>
         </div>
         
-        <div className="col-sm-12 col-lg-4">
+        <div className="col-sm-12 col-lg-4 mb-5">
     <h3 style={{background:"white"}}>Recently Uploaded Documents</h3>
        
           {data.map((item, index) => (
@@ -198,6 +235,122 @@ const App = () => {
           ))}
         </div>
       </div>
+      <div className="col-sm-12 col-lg-12">
+      <div className='approval-control-main-div' style={{ }}>
+  <h2 className='mb-3 mt-3' style={{ fontWeight: "bold" }}>Approval Control</h2>
+  <div className="search-container mt-3 approval-control-main-div"  style={{}}>
+    <div>
+      <input
+        type="text"
+        value={searchCategory}
+        onChange={(e) => setSearchCategory1(e.target.value)}
+        placeholder="Search by Category"
+        className="search-input mx-4"
+        style={{width:"90%"}}
+      />
+    </div>
+    <div>
+      <input
+        type="text"
+        value={searchTag}
+        onChange={(e) => setSearchTag1(e.target.value)}
+        placeholder="Search by Tag"
+        className="search-input mx-4"
+        style={{width:"90%"}}
+
+      />
+    </div>
+    <div>
+      <input
+        type="text"
+        value={searchRule}
+        onChange={(e) => setSearchRule1(e.target.value)}
+        placeholder="Search by Rule Number"
+        className="search-input mx-4"
+        style={{width:"90%"}}
+ 
+      />
+    </div>
+    <div>
+      <input
+        type="text"
+        value={searchRule}
+        onChange={(e) => setSearchRule(e.target.value)}
+        placeholder="Search by date"
+        className="search-input mx-4"
+        style={{width:"90%"}}
+ 
+      />
+    </div>
+  </div>
+</div>
+
+          <table className="table">
+            <thead>
+              <tr>
+                <th scope="col">Rule</th>
+                <th scope="col">Title</th>
+                {/* <th scope="col">Description</th> */}
+                <th scope="col">Category</th>
+                <th scope="col">Updated At</th>
+                <th scope="col">Updated By</th>
+                <th scope="col">Changes</th>
+                <th scope="col">Action 1</th>
+                <th scope="col">Action 2</th>
+                <th scope="col">Approval</th>
+
+
+              </tr>
+            </thead>
+            <tbody>
+              {searchResults1.length > 0 ? (
+                searchResults1.map((row, index) => (
+                  <tr
+                    key={index}
+                    style={{ color: 'white' }}
+                    onClick={() => handleRowClick(row.rule)}
+                  >
+                    <th scope="row" data-label="Rule Number">
+                      {row.rule}
+                    </th>
+                    <td data-label="Title" style={{ wordWrap: 'break-word' }}>
+                      {row.heading}
+                    </td>
+                    <td
+                      data-label="Description"
+                      style={{ wordWrap: 'break-word' }}
+                    >
+                     {row.category}
+                    </td>
+                    <td data-label="CreatedAt" style={{ wordWrap: 'break-word' }}>
+                      {row.createdAt}
+                    </td>
+                    <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
+                      {row.updatedBy}
+                    </td>
+                    <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
+                    <button class="btn-dark mx-1" style={{width:"85px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">View Changes</button>
+                    </td>
+                    <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
+                    <button class="btn-success mx-1" style={{width:"85px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">Approve</button>
+                    </td>
+                    <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
+                    <button class="btn-danger mx-1" style={{width:"85px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">Reject</button>
+                    </td>
+                    <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
+                    <button class="btn-dark mx-1" style={{width:"85px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">Check status</button>
+                    </td>
+                    
+                  </tr>
+                ))
+              ) : (
+                <tr style={{ color: 'white' }}>
+                  <td colSpan="5">No results found</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
     </div>
   );
 };
