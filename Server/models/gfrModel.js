@@ -6,6 +6,7 @@ const updateUserSchema = new mongoose.Schema(
     member2: { type: String, required: true },
     member3: { type: Number, required: true },
     member4: { type: Number, required: true },
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
   },
   {
     timestamps: true,

@@ -1,7 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect,useState } from 'react';
 import './css/dashboard.css';
+import Axios from "axios";
+
 
 const App = () => {
+  const [gfrData, setGfrData] = useState([]);
+  const fetchData = async () => {
+    try {
+      const { data } = await Axios.get('/api/gfr/getGfrRule');
+      setGfrData(data.rules);
+      console.log('data:',data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    fetchData();
+  },[]);
   const data = [
     {
       title: 'Requirement of Split AC Tender',
@@ -67,7 +82,7 @@ const App = () => {
 
   return (
     <div className="container-fluid">
-      <div className="row mt-5">
+      {/* <div className="row mt-5">
         <div className="col-sm-12 col-lg-8">
           <div className="search-container">
             <div>
@@ -170,7 +185,7 @@ const App = () => {
         <div className="col-sm-12 col-lg-4">
     <h3 style={{background:"white"}}>Recently Uploaded Documents</h3>
        
-          {data.map((item, index) => (
+          {gfrData.map((item, index) => (
 
             <div className="custom-table" key={index}>
                  <br/>
@@ -197,7 +212,15 @@ const App = () => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
+
+{gfrData.map((item) => (
+        <div key={item._id}>
+          <h2>{item.rule}</h2>
+          <p>{item.description}</p>
+         
+        </div>
+      ))}
     </div>
   );
 };

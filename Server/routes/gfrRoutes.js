@@ -10,9 +10,14 @@ const gfrRouter = express.Router();
 gfrRouter.get('/getGfrRule', async (req, res) => {
     try {
       const rules = await GFR.find();
+      const formattedRules = rules.map(({ rule, heading, description, category }) => ({
+        rule,
+        heading,
+        description,
+        category,
+      }));
   
-      // Use res.json() to explicitly send JSON-formatted response
-      res.json({ rules });
+      res.json({ rules: formattedRules });
     } catch (error) {
       console.error('Error fetching GFR rules:', error.message);
       res.status(500).json({ error: 'Internal Server Error' });
