@@ -1,5 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import './css/dashboard.css';
+import { Link } from 'react-router-dom';
+
 import Axios from "axios";
 const App = () => {
   const data = [
@@ -11,7 +13,7 @@ const App = () => {
       updatedStart: '2023-01-01',
       updatedEnd: '2023-01-31',
     },
-    {
+    { 
       title: 'Requirement of Split AC Tender',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip',
@@ -71,7 +73,7 @@ const App = () => {
     try {
       const { data } = await Axios.get('/api/gfr/getGfrRule');
       setGfrData(data.rules);
-      console.log(data);
+      // console.log(data);
     } catch (err) {
       console.log(err);
     }
@@ -111,7 +113,7 @@ const App = () => {
   };
 
   const handleRowClick = (rule) => {
-    console.log(`Row clicked: ${rule}`);
+    // console.log(`Row clicked: ${rule}`);
     // Implement your row click logic here
   };
 
@@ -177,6 +179,7 @@ const App = () => {
               </tr>
             </thead>
             <tbody>
+           
               {gfrData.length > 0 ? (
                 gfrData.map((row, index) => (
                   <tr
@@ -202,8 +205,26 @@ const App = () => {
                       {row.category}
                     </td>
                     <td data-label="Action" style={{ wordWrap: 'break-word' }}>
-<button class="btn-dark mx-1" style={{width:"45px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">View</button>
-<button class="btn-primary mx-1" style={{width:"45px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">Edit</button>
+
+<Link to={`/view/${row._id}`}>
+      <button
+        className="btn-dark mx-1"
+        style={{ width: "45px", height: "25px", fontSize: "10px", borderRadius: "5px" }}
+        type="button"
+      >
+        View
+      </button>
+    </Link>
+<Link to={`/edit/${row._id}`}>
+      <button
+        className="btn-primary mx-1"
+        style={{ width: "45px", height: "25px", fontSize: "10px", borderRadius: "5px" }}
+        type="button"
+      >
+        Edit
+      </button>
+    </Link>
+{/* <button class="btn-primary mx-1" style={{width:"45px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">Edit</button> */}
 <button class="btn-danger" style={{width:"45px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">Delete</button>
                       
                     </td>
