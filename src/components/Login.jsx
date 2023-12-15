@@ -1,23 +1,24 @@
 import React, { useState } from 'react'
 import Axios from 'axios';
 import "./css/login.css"
-const Login = () => {
-const [email,setEmail]=useState('');
-const [password,setPassword]=useState('');
 
-const submitHandler = async (e) => {
-  e.preventDefault();
-  try {
-    const { data } = await Axios.post('/api/users/signin', {
-      email,
-      password,
-    });
-    localStorage.setItem('userInfo', JSON.stringify(data));
-    console.log('user sucessfully loged in');
-  } catch (err) {
-    console.log(err);
-  }
-};
+const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await Axios.post("/api/users/signin", {
+        email,
+        password,
+      });
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      console.log("user sucessfully loged in");
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="login-page ">
     <div className="container">
@@ -94,4 +95,4 @@ const submitHandler = async (e) => {
   )
 }
 
-export default Login
+export default Login;

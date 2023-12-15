@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { useEffect,useState } from 'react';
+import Axios from "axios";
 
 const Admin = () => {
+  // const [gfrData, setGfrData] = useState([]);
+  // const fetchData = async () => {
+  //   try {
+  //     const { data } = await Axios.get('/api/gfr/getGfrRule');
+  //     setGfrData(data);
+  //     console.log(data);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+  // useEffect(() => {
+  //   fetchData();
+  // },[]);
   const arr = [
     {
       "rule": "172",
@@ -14,6 +28,7 @@ const Admin = () => {
 
   return (
     <div className="container mt-5">
+       {/* {console.log("data:",gfrData)} */}
     {arr.map((item, index) => (
       <div key={index} className="card mt-3">
         <div className="card-header">
@@ -37,7 +52,7 @@ const Admin = () => {
           </blockquote>
         </div>
       </div>
-    ))}
+    ))} 
   </div>
   );
 }

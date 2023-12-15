@@ -9,13 +9,7 @@ export default defineConfig({
     proxy: {
       '/api/users/signup': useitforlocal,
       '/api/users/signin': useitforlocal,
-      '/about': useitforlocal,
-      '/contact': useitforlocal,
-      '/registeredteams': useitforlocal,
-      '/logout': useitforlocal,
-      '/search':useitforlocal,
-      '/search_so':useitforlocal,
-      '/publishstatus':useitforlocal
+      '/api/gfr/getGfrRule': useitforlocal,
     },
   },
 })

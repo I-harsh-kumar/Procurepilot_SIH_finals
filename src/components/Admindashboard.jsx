@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './css/dashboard.css';
-
+import Axios from "axios";
 const App = () => {
   const data = [
     {
@@ -65,6 +65,20 @@ const App = () => {
  
     },
   ]
+
+   const [gfrData, setGfrData] = useState([]);
+  const fetchData = async () => {
+    try {
+      const { data } = await Axios.get('/api/gfr/getGfrRule');
+      setGfrData(data.rules);
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    fetchData();
+  },[]);
   const [searchResults, setSearchResults] = useState(arr);
   const [searchResults1, setSearchResults1] = useState(arr1);
   const [searchCategory, setSearchCategory] = useState('');
@@ -163,8 +177,8 @@ const App = () => {
               </tr>
             </thead>
             <tbody>
-              {searchResults.length > 0 ? (
-                searchResults.map((row, index) => (
+              {gfrData.length > 0 ? (
+                gfrData.map((row, index) => (
                   <tr
                     key={index}
                     style={{ color: 'white' }}
