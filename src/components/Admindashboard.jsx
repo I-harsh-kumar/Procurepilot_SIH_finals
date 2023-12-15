@@ -167,7 +167,7 @@ const App = () => {
    </div>
    <div className="row mt-5">
    
-        <div className="col-sm-12 col-lg-8">
+        <div className="col-sm-12 col-lg-8" style={{ overflowY: 'auto', maxHeight: '400px' }}>
           <table className="table">
             <thead>
               <tr>
@@ -216,7 +216,7 @@ const App = () => {
       </button>
     </Link>
 <Link to={`/edit/${row._id}`}>
-      <button
+      <button 
         className="btn-primary mx-1"
         style={{ width: "45px", height: "25px", fontSize: "10px", borderRadius: "5px" }}
         type="button"

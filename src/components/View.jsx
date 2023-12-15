@@ -31,8 +31,11 @@ const Edit = () => {
   }
 
   return (
+
     <div className="container mt-5">
+
       <div className="card mt-3">
+        
         <div className="card-header">
          <span style={{fontWeight:"bold",fontSize:"22px"}}> {rule.rule}</span>
          <span style={{fontSize:"20px"}}> &nbsp; {rule.heading} </span>
@@ -56,6 +59,7 @@ const Edit = () => {
             <footer className="blockquote-footer">Category: {rule.category}</footer>
           </blockquote>
         </div>
+       
       </div>
     </div>
   );

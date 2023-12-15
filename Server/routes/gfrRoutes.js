@@ -37,6 +37,7 @@ gfrRouter.get('/getGfrRule', async (req, res) => {
       }
   
       const formattedRule = {
+        id:ruleId, 
         rule: rule.rule,
         heading: rule.heading,
         description: rule.description,
