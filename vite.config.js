@@ -10,6 +10,7 @@ export default defineConfig({
       '/api/users/signup': useitforlocal,
       '/api/users/signin': useitforlocal,
       '/api/gfr/getGfrRule': useitforlocal,
+      '/api/gfr/addGfrRule': useitforlocal,
       '/api/gfr/edit': {
         target: useitforlocal,
         rewrite: (path) => path.replace(/^\/api\/gfr\/edit\//, '/api/gfr/edit/'), // Add the dynamic part here
