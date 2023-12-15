@@ -27,6 +27,21 @@ userRouter.post(
   })
 );
 //existing user
+userRouter.get(
+  '/getuserinfo',
+  isAuth,
+  expressAsyncHandler(async (req, res) => {
+    console.log('Reached username endpoint');
+
+    const user = await User.findById(req.user._id);
+    if (user) {
+      console.log(user.name);
+      res.send({ name: user.name });
+    } else {
+      res.status(404).send({ message: 'User not found' });
+    }
+  })
+);
 userRouter.post(
   '/signin',
   expressAsyncHandler(async (req, res) => {

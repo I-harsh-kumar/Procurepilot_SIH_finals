@@ -57,5 +57,34 @@ approvalRouter.post(
     }
   })
 );
+approvalRouter.get('/getapprovaldata', async (req, res) => {
+  // console.log('Reached /edit/:id endpoint');
 
+    try {
+      const data = await Approval.find();
+      res.json({ success: true, data });
+    
+    } catch (error) {
+      console.error('Error fetching GFR rules:', error.message);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+  approvalRouter.get('/compare/:id', async (req, res) => {
+    console.log('Reached /edit/:id endpoint');
+    try {
+      const ruleId = req.params.id;
+      const data = await Approval.findOne({ _id: ruleId });
+      console.log("suraj");
+      if (!data) {
+        return res.status(404).json({ error: 'Rule not found' });
+      }
+  
+      
+  
+      res.json({ rule: data });
+    } catch (error) {
+      console.error('Error fetching GFR rule by ID:', error.message);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
 module.exports = approvalRouter;
