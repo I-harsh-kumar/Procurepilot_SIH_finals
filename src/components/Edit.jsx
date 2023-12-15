@@ -189,7 +189,7 @@ const Edit = () => {
               />
             </div>
 
-            <button onClick={handleSave} type="submit" style={{float:"right"}} className="btn btn-success">Request for Approval</button>
+            <button onClick={handleSave} type="submit" style={{float:"right"}} className="btn btn-success mb-4">Request for Approval</button>
           </blockquote>
         </div>
         </form>

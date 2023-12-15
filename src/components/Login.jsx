@@ -64,11 +64,11 @@ const Login = () => {
     <a href="" className='mt-2' style={{textDecoration:'underline', float:"right"}}>forget password</a>           
     </div> 
     </div>
-    
-    </form>
-  <button  type="submit" class=" mt-5 btn btn-outline-primary ">
+    <button  type="submit" class=" mt-5 btn btn-outline-primary ">
       Login 
     </button> 
+    </form>
+  
                   <p style={{marginTop: "10%"}}>Dont have an account?<a href="" style={{textDecoration: "underline"}}>Signup</a> </p>
                 
                   <div style={{width:"200px", height:"200px", borderRadius:"50%", border: "0.3px solid #1c1c1c", backgroundColor:"black", position:"absolute",right:'-100px',bottom:'-100px' }}></div> 

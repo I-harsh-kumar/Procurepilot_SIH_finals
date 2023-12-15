@@ -1,9 +1,40 @@
 import React, { useState,useEffect } from 'react';
 import './css/dashboard.css';
 import { Link } from 'react-router-dom';
+import { Button, Modal } from 'react-bootstrap';
 
 import Axios from "axios";
 const App = () => {
+  const [showApproveModal, setShowApproveModal] = useState(false);
+  const [showRejectModal, setShowRejectModal] = useState(false);
+
+  const handleApprove = () => {
+    setShowApproveModal(true);
+  };
+
+  const handleReject = () => {
+    setShowRejectModal(true);
+  };
+  
+  const handleConfirmation = (confirmed, action) => {
+    if (action === 'approve') {
+      setShowApproveModal(false);
+    } else if (action === 'reject') {
+      setShowRejectModal(false);
+    }
+
+    if (confirmed) {
+      // Handle the approval or rejection logic here
+      if (action === 'approve') {
+        console.log('Approved!');
+      } else if (action === 'reject') {
+        console.log('Rejected!');
+      }
+    } else {
+      console.log('Action canceled.');
+    }
+  };
+
   const data = [
     {
       title: 'Requirement of Split AC Tender',
@@ -67,13 +98,46 @@ const App = () => {
  
     },
   ]
+  const [userName, setUserName] = useState('');
+
+  const fetchUserInfo = async () => {
+    try {
+      const response = await Axios.get('/api/users/getuserinfo');
+      
+      setUserName(response.data.name);
+      console.log(userName);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserInfo();
+  }, []);
+ 
+  const [approvalData, setApprovalData] = useState([]);
+
+const fetchData1 = async () => {
+  try {
+    const response = await Axios.get('/api/approval/getapprovaldata');
+    // Use response.data instead of data1
+    setApprovalData(response.data.data);
+    console.log(response.data.data);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+useEffect(() => {
+  fetchData1();
+}, []);
 
    const [gfrData, setGfrData] = useState([]);
   const fetchData = async () => {
     try {
       const { data } = await Axios.get('/api/gfr/getGfrRule');
       setGfrData(data.rules);
-      // console.log(data);
+      //console.log(data);
     } catch (err) {
       console.log(err);
     }
@@ -204,7 +268,7 @@ const App = () => {
                     <td data-label="Category" style={{ wordWrap: 'break-word' }}>
                       {row.category}
                     </td>
-                    <td data-label="Action" style={{ wordWrap: 'break-word' }}>
+                    <td  data-label="Action" style={{ wordWrap: 'break-word' }}>
 
 <Link to={`/view/${row._id}`}>
       <button
@@ -338,51 +402,99 @@ const App = () => {
               </tr>
             </thead>
             <tbody>
-              {searchResults1.length > 0 ? (
-                searchResults1.map((row, index) => (
-                  <tr
-                    key={index}
-                    style={{ color: 'white' }}
-                    onClick={() => handleRowClick(row.rule)}
-                  >
-                    <th scope="row" data-label="Rule Number">
-                      {row.rule}
-                    </th>
-                    <td data-label="Title" style={{ wordWrap: 'break-word' }}>
-                      {row.heading}
-                    </td>
-                    <td
-                      data-label="Description"
-                      style={{ wordWrap: 'break-word' }}
-                    >
-                     {row.category}
-                    </td>
-                    <td data-label="CreatedAt" style={{ wordWrap: 'break-word' }}>
-                      {row.createdAt}
-                    </td>
-                    <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
-                      {row.updatedBy}
-                    </td>
-                    <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
-                    <button class="btn-dark mx-1" style={{width:"85px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">View Changes</button>
-                    </td>
-                    <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
-                    <button class="btn-success mx-1" style={{width:"85px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">Approve</button>
-                    </td>
-                    <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
-                    <button class="btn-danger mx-1" style={{width:"85px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">Reject</button>
-                    </td>
-                    <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
-                    <button class="btn-dark mx-1" style={{width:"85px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">Check status</button>
-                    </td>
-                    
-                  </tr>
-                ))
-              ) : (
-                <tr style={{ color: 'white' }}>
-                  <td colSpan="5">No results found</td>
-                </tr>
-              )}
+            {approvalData.length > 0 ? (
+  approvalData.map((row, index) => (
+    <tr
+      key={index}
+      style={{ color: 'white' }}
+      onClick={() => handleRowClick(row.dataOriginal.rule)}
+    >
+      <th scope="row" data-label="Rule Number">
+        {row.dataOriginal.rule}
+      </th>
+      <td data-label="Title" style={{ wordWrap: 'break-word' }}>
+        {row.dataOriginal.title}
+      </td>
+      <td
+        data-label="Description"
+        style={{ wordWrap: 'break-word' }}
+      >
+        {row.dataOriginal.category}
+      </td>
+      <td data-label="CreatedAt" style={{ wordWrap: 'break-word' }}>
+        {row.editAt}
+      </td>
+      <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
+        {row.editBy}
+      </td>
+      <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
+        {/* {console.log({"surajidis__",(row._id)})} */}
+      <Link to={`/compare/${row._id}`}>  <button class="btn-dark mx-1" style={{width:"85px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">View Changes</button></Link>  
+      </td>
+      <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
+      <button
+          className="btn-success mx-1"
+          style={{ width: '85px', height: '25px', fontSize: '10px', borderRadius: '5px' }}
+          type="button"
+          onClick={handleApprove}
+        >
+          Approve
+        </button>
+        <Modal show={showApproveModal} onHide={() => handleConfirmation(false, 'approve')}>
+        <Modal.Header style={{ backgroundColor: 'lightgray', color: 'black' }}>
+          <Modal.Title>Confirmation</Modal.Title>
+          <Button variant="link" onClick={() => handleConfirmation(false, 'approve')} style={{fontSize:"25px", color: 'black' }}>
+            &times;
+          </Button>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to approve?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => handleConfirmation(false, 'approve')}>
+            No
+          </Button>
+          <Button variant="success" onClick={() => handleConfirmation(true, 'approve')}>
+            Yes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      </td>
+      <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
+      <button
+          className="btn-danger mx-1"
+          style={{ width: '85px', height: '25px', fontSize: '10px', borderRadius: '5px' }}
+          type="button"
+          onClick={handleReject}
+        >
+          Reject
+        </button>
+        <Modal show={showRejectModal} onHide={() => handleConfirmation(false, 'reject')}>
+        <Modal.Header style={{ backgroundColor: 'lightgray', color: 'black' }}>
+          <Modal.Title>Confirmation</Modal.Title>
+          <Button variant="link" onClick={() => handleConfirmation(false, 'reject')} style={{ fontSize:"25px",color: 'black' }}>
+            &times;
+          </Button>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to reject?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => handleConfirmation(false, 'reject')}>
+            No
+          </Button>
+          <Button variant="danger" onClick={() => handleConfirmation(true, 'reject')}>
+            Yes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      </td>
+      <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
+        <button class="btn-dark mx-1" style={{width:"85px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">Check status</button>
+      </td>
+    </tr>
+  ))
+) : (
+  <tr style={{ color: 'white' }}>
+    <td colSpan="5">No results found</td>
+  </tr>
+)}
             </tbody>
           </table>
         </div>

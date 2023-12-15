@@ -7,7 +7,7 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import Edit from './components/Edit';
 import View from './components/View';
-
+import CompareChanges from "./components/CompareChanges"
 import Admindashboard from './components/Admindashboard';
 
 // import { Edit } from '@mui/icons-material';
@@ -23,6 +23,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/edit/:id" element={<Edit />} />
           <Route path="/view/:id" element={<View />} />
+          <Route path="/compare/:id" element={<CompareChanges/>}/>
 
           <Route path="/admindashboard" element={<Admindashboard/>}/>
         </Routes>
