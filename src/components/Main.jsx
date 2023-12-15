@@ -57,13 +57,18 @@ const Main = () => {
 <div class="container-new">
   {/* <!-- Side infos --> */}
   <div class="side-info">
-    <span>Welcome to Our Guidelines Hub!</span>
-    <h1>Elevate Procurement</h1>
-    <hr />
+    
+    <h1>Procurepilot</h1>
+    <span>Charting Compliance, Empowering Governance</span>
+
+    {/* <hr /> */}
+
+    
     <p>
-    Charting the Course for Progress
-Discover a Centralized Repository of Insights and Expertise for Informed Decision-Making.
-    </p>
+    Revolutionize governmental contract management with ProcurePilot, an intuitive tool tailored for public officials. Navigating the regulatory skies, it becomes the strategic ally for government procurers, ensuring meticulous compliance and smooth procurement journeys.
+      
+     </p>
+    
     <a href="#">Browse More</a>
   </div>
   {/* <!-- Swiper slider --> */}
@@ -72,11 +77,9 @@ Discover a Centralized Repository of Insights and Expertise for Informed Decisio
       {/* <!-- Content 1 --> */}
       <div class="swiper-slide slide-one">
         <div>
-          <h2>Get Guidelines</h2>
+          <h2>Centralized Repository</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum
-            nemo eveniet delectus obcaecati dolorem at, cumque deleniti sint
-            laborum adipisci quis aut consequuntur eum?
+          procurepiolet organizes all essential documents and regulations in one place for easy access.
           </p>
           <a href="#">View Detail</a>
         </div>
@@ -84,11 +87,9 @@ Discover a Centralized Repository of Insights and Expertise for Informed Decisio
       {/* <!-- Content 2 --> */}
       <div class="swiper-slide slide-two">
         <div>
-          <h2>Get your tender score</h2>
+          <h2>Get tender score</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum
-            nemo eveniet delectus obcaecati dolorem at, cumque deleniti sint
-            laborum adipisci quis aut consequuntur eum?
+          procurepiolet mark adopted documents on the basis of compliance with the guidelines and provide a Tender score on the basis. It further asses the compliance of the tender.
           </p>
           <a href="#">View Detail</a>
         </div>
@@ -96,11 +97,9 @@ Discover a Centralized Repository of Insights and Expertise for Informed Decisio
       {/* <!-- Content 3 --> */}
       <div class="swiper-slide slide-three">
         <div>
-          <h2>Dummy 03</h2>
+          <h2>Advance Search & Filter</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum
-            nemo eveniet delectus obcaecati dolorem at, cumque deleniti sint
-            laborum adipisci quis aut consequuntur eum?
+          procurepiolet effortlessly find specific documents through powerful search and custom filters.
           </p>
           <a href="#">View Detail</a>
         </div>
@@ -108,11 +107,9 @@ Discover a Centralized Repository of Insights and Expertise for Informed Decisio
       {/* <!-- Content 4 --> */}
       <div class="swiper-slide slide-four">
         <div>
-          <h2>Dummy 04</h2>
+          <h2>Interactive Chatbots</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum
-            nemo eveniet delectus obcaecati dolorem at, cumque deleniti sint
-            laborum adipisci quis aut consequuntur eum?
+          Unlock knowledge effortlessly! Our interactive chatbox seamlessly searches through our repository and knowledge base, delivering accurate answers to your queries. Experience a smarter way to access information and stay informed.
           </p>
           <a href="#">View Detail</a>
         </div>

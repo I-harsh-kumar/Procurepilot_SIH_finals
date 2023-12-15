@@ -1,8 +1,22 @@
-import { useState } from "react";
+import React, { useEffect, useState } from 'react';
 import "./css/Login.css";
 import Axios from "axios";
 
 const Signup = () => {
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+  useEffect(() => {
+    // Update the window height when the window is resized
+    const handleResize = () => {
+      setWindowHeight(window.innerHeight);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,7 +41,9 @@ const Signup = () => {
     }
   };
   return (
+    
     <div className="login-page">
+      {console.log(windowHeight)}
       <div className="container">
         <div className="row" style={{marginTop:"80px"}}>
           <div className="col-sm-12 col-lg-7 p-3" >

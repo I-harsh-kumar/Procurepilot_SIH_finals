@@ -12,9 +12,9 @@
 
 .container-new .side-info span {
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-size: 16px;
-  color: #717171;
+  letter-spacing: 0.8px;
+  font-size: 14px;
+  color: #005baa;
 }
 
 .container-new .side-info h1 {
@@ -22,9 +22,9 @@
   letter-spacing: 0.8px;
   font-family: "Roboto", sans-serif;
   font-weight: 900;
-  font-size: 56px;
+  font-size: 72px;
   background-color: #005baa;
-  background-image: linear-gradient(45deg, #005baa, #000000);
+  /* background-image: linear-gradient(45deg, #005baa, #000000); */
   background-size: 100%;
   background-repeat: repeat;
   background-clip: text;
@@ -32,6 +32,17 @@
   -webkit-text-fill-color: transparent;
   -moz-background-clip: text;
   -moz-text-fill-color: transparent;
+}
+
+.container-new .side-info p{
+
+  max-width: 600px;
+  max-height: 500px;
+  overflow: hidden;
+  text-align: justify;
+  margin-top: 40px ;
+  color: #1c1c1c;
+
 }
 
 .container-new .side-info hr {
@@ -63,6 +74,7 @@
 
 .container-new .swiper {
   width: 100%;
+  margin-left: 10px;
 }
 
 .swiper-pagination-bullet,
@@ -75,7 +87,7 @@
 }
 
 .swiper-slide {
-  width: 300px;
+  width: 450px;
   height: 450px;
   display: flex;
   flex-direction: column;
@@ -84,10 +96,12 @@
 }
 
 .swiper-slide h2 {
-  color: #fff;
+  color: #1c1c1c ;
+  -webkit-text-stroke: #ffffff;
+  -webkit-text-stroke-width: 0.4px;
   font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-size: 22px;
+  font-weight: 600;
+  font-size: 20px;
   line-height: 1.4;
   margin-bottom: 10px;
   padding: 0 0 0 24px;
@@ -95,7 +109,7 @@
 }
 
 .swiper-slide p {
-  color: #dadada;
+  color:#ffffff ;
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   padding: 0 24px;
@@ -130,22 +144,22 @@
 
 .slide-one {
   background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
-    url(/public/07cd26a138.jpg) no-repeat 50% 50% / cover;
+    url(public/centarlizedrepo.png) no-repeat 50% 50% / cover;
 }
 
 .slide-two {
   background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
-    url(/public/07cd26a138.jpg) no-repeat 50% 50% / cover;
+    url(public/getts2.png) no-repeat 50% 50% / cover;
 }
 
 .slide-three {
   background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
-    url(/public/07cd26a138.jpg) no-repeat 50% 50% / cover;
+    url(public/searchanfilter.png) no-repeat 50% 50% / cover;
 }
 
 .slide-four {
   background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
-    url(/public/07cd26a138.jpg) no-repeat 50% 50% / cover;
+    url(public/interactivechatbot.png) no-repeat 50% 50% / cover;
 }
 
 /* Responsive Design */
