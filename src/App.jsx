@@ -7,7 +7,7 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import Edit from './components/Edit';
 import View from './components/View';
-
+import CompareChanges from "./components/CompareChanges"
 import Admindashboard from './components/Admindashboard';
 import AddNewRule from './components/AddNewRule';
 import ChatBot from './components/chatBot';
@@ -25,6 +25,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/edit/:id" element={<Edit />} />
           <Route path="/view/:id" element={<View />} />
+          <Route path="/compare/:id" element={<CompareChanges/>}/>
           <Route path="/addNewRule" element={<AddNewRule/>} />
           <Route path="/searchByAI" element={<ChatBot/>} />
           

@@ -1,6 +1,4 @@
-const arr = [
-   
-    { "rule": "142",
+ [{ "rule": "142",
     "heading": "Universal Procurement Guidelines for Ministries and Departments",
     "description": "This chapter contains the general rules applicable to all Ministries or Departments, regarding procurement of goods required for use in the public service. Detailed instructions relating to procurement of goods may be issued by the procuring departments broadly in conformity with the general rules contained in this Chapter.", 
     "category": ""
@@ -549,8 +547,7 @@ const arr = [
        "description": "Any circumstances which are not covered in Rule 198 to Rule 205 for procurement of non-consulting services, the procuring entity may refer Rule 135 to Rule 176 pertaining to procurement of goods and not to the procurement of consulting services.",
        "category": ""
      },
-      
+ ]  
       
    
-     // Add more items to the array if needed
-   ];
+   

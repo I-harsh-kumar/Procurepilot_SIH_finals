@@ -8,7 +8,7 @@ const { isAuth, isAdmin, generateToken} = require('../utils.js');
 const gfrRouter = express.Router();
 
 gfrRouter.get('/getGfrRule', async (req, res) => {
-  // console.log('Reached /edit/:id endpoint');
+  //console.log('Reached /edit/:id endpoint');
 
     try {
       const rules = await GFR.find();
@@ -37,6 +37,7 @@ gfrRouter.get('/getGfrRule', async (req, res) => {
       }
   
       const formattedRule = {
+        id:ruleId, 
         rule: rule.rule,
         heading: rule.heading,
         description: rule.description,
