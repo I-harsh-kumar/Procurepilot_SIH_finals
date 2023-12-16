@@ -11,11 +11,15 @@ import CompareChanges from "./components/CompareChanges"
 import Admindashboard from './components/Admindashboard';
 import AddNewRule from './components/AddNewRule';
 import ChatBot from './components/chatBot';
+import { createContext, useState,useReducer } from 'react';
+import { intialState,reducer } from './reducer/useReducer';
 
 // import { Edit } from '@mui/icons-material';
+export const UserContext=createContext();
 const App = () => {
-  return (
-    <div>
+  const [state, dispatch] = useReducer(reducer,intialState);
+  return ( 
+      <UserContext.Provider value={{state,dispatch}}>
       <Router>
       <div>
         <Navbar />
@@ -31,10 +35,12 @@ const App = () => {
           
           <Route path="/admindashboard" element={<Admindashboard/>}/> 
         </Routes>
+       
+
       </div>
     </Router>
-      
-    </div>
+    </UserContext.Provider>
+  
   )
 }
 

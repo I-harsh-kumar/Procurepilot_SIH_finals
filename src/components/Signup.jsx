@@ -1,8 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext} from 'react';
 import "./css/Login.css";
 import Axios from "axios";
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { UserContext } from '../App';
 
 const Signup = () => {
+  const navigate = useNavigate();
+  const {state,dispatch} = useContext(UserContext);
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
   useEffect(() => {
     // Update the window height when the window is resized
@@ -35,7 +40,9 @@ const Signup = () => {
         password,
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
+      dispatch({type:"USER",payload:true});
       console.log('new user created');
+      navigate('/');
     } catch (err) {
       console.log(err);
     }
@@ -98,7 +105,7 @@ const Signup = () => {
     </button>
   </div>
               </form>
-
+              <p style={{marginTop: "10%"}}>Already Have a account? <Link to="/login" style={{textDecoration: "underline"}}>Login</Link> </p>
               <div style={{width:"200px", height:"200px", borderRadius:"50%", border: "0.3px solid #1c1c1c", backgroundColor:"black", position:"absolute",right:'-100px',bottom:'-100px' }}></div> 
                   <div style={{width:"200px", height:"200px", borderRadius:"50%", border: "0.3px solid #1c1c1c", backgroundColor:"none", position:"absolute",right:'-100px',bottom:'-90px' }}></div> 
                   <div style={{width:"200px", height:"200px", borderRadius:"50%", border: "0.3px solid #1c1c1c", backgroundColor:"none", position:"absolute",right:'-100px',bottom:'-80px' }}></div> 
