@@ -100,15 +100,12 @@ const App = () => {
   ]
   const [userName, setUserName] = useState('');
 
-  const fetchUserInfo = async () => {
-    try {
-      const response = await Axios.get('/api/users/getuserinfo');
-      
-      setUserName(response.data.name);
+  const fetchUserInfo =() => {
+    const storedUserInfo = JSON.parse(localStorage.getItem('userInfo'));
+    const userName = storedUserInfo.name;
+      setUserName(userName);
       console.log(userName);
-    } catch (error) {
-      console.error(error);
-    }
+
   };
 
   useEffect(() => {
