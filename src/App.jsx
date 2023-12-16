@@ -9,6 +9,8 @@ import Edit from './components/Edit';
 import View from './components/View';
 import CompareChanges from "./components/CompareChanges"
 import Admindashboard from './components/Admindashboard';
+import AddNewRule from './components/AddNewRule';
+import ChatBot from './components/chatBot';
 
 // import { Edit } from '@mui/icons-material';
 const App = () => {
@@ -17,15 +19,17 @@ const App = () => {
       <Router>
       <div>
         <Navbar />
-        <Routes> {/* Wrap your routes with Routes */}
-          <Route path="/" element={<Main />} />
+        <Routes> 
+           <Route path="/" element={<Main />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/edit/:id" element={<Edit />} />
           <Route path="/view/:id" element={<View />} />
           <Route path="/compare/:id" element={<CompareChanges/>}/>
-
-          <Route path="/admindashboard" element={<Admindashboard/>}/>
+          <Route path="/addNewRule" element={<AddNewRule/>} />
+          <Route path="/searchByAI" element={<ChatBot/>} />
+          
+          <Route path="/admindashboard" element={<Admindashboard/>}/> 
         </Routes>
       </div>
     </Router>

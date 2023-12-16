@@ -8,6 +8,7 @@ const App = () => {
   const [showApproveModal, setShowApproveModal] = useState(false);
   const [showRejectModal, setShowRejectModal] = useState(false);
    const [name,setName]=useState("suraj_govt");
+
   const [approvalName1,setApprovalName1]=useState("");
   const [approvalName2,setApprovalName2]=useState("");
   const [approvalName3,setApprovalName3]=useState("");
@@ -41,7 +42,7 @@ const App = () => {
       // Check if approval1 is empty before showing the modal
       setShowApproveModal(true);
       if(row.approval1===''){
-      console.log("suraj");
+      // console.log("suraj");
         
         updateApproval(row,"approval1");
       }
@@ -56,7 +57,7 @@ const App = () => {
     const handleReject = () => {
       setShowRejectModal(true);
     };
-  
+  // console.log(name);
   const handleConfirmation = (confirmed, action) => {
     // console.log(root._id);
     // if(action==='approve'){
@@ -72,6 +73,7 @@ const App = () => {
       // Handle the approval or rejection logic here
       if (action === 'approve') {
         console.log('Approved!');
+
       } else if (action === 'reject') {
         console.log('Rejected!');
       }
@@ -146,15 +148,14 @@ const App = () => {
   const [userName, setUserName] = useState('suraj_approver');
 
   const fetchUserInfo = async () => {
-    try {
-      const response = await Axios.get('/api/users/getuserinfo');
-      
-      setUserName(response.data.name);
+    const storedUserInfo = JSON.parse(localStorage.getItem('userInfo'));
+    const userName = storedUserInfo.name;
+      setUserName(userName);
+      setName(userName);
       // console.log(userName);
-    } catch (error) {
-      console.error(error);
-    }
+
   };
+
 
   useEffect(() => {
     fetchUserInfo();
@@ -264,8 +265,9 @@ useEffect(() => {
           </div>
         </div>
         <div className="col-sm-12 col-lg-4" style={{textAlign:"center"}}>
-
-<button class="btn btn-primary mb-4" style={{width:"250px",height:"45px"}} type="submit">Add new document +</button>
+<Link to="/addNewRule">
+<button class="btn btn-primary mb-4" style={{width:"250px",height:"45px"}} type="submit">Add new Rule +</button>
+</Link>
 
 <br/>
 

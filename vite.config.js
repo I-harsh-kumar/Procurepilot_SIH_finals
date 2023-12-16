@@ -9,10 +9,11 @@ export default defineConfig({
     proxy: {
       '/api/users/signup': useitforlocal,
       '/api/users/signin': useitforlocal,
-      '/api/users/getuserinfo': useitforlocal,
+      // '/api/users/getuserinfo': useitforlocal,
       '/api/gfr/getGfrRule': useitforlocal,
       '/api/approval/editrule':useitforlocal,
       // '/api/approval/compare':useitforlocal,
+      '/api/gfr/addGfrRule': useitforlocal,
       "/api/approval/updateApproval": {
         target: useitforlocal,
         rewrite: (path) => path.replace(/^\/api\/approval\/updateApproval\//, '/api/approval/updateApproval/'), // Add the dynamic part here
