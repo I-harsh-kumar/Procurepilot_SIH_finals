@@ -13,6 +13,7 @@ export default defineConfig({
       '/api/gfr/getGfrRule': useitforlocal,
       '/api/approval/editrule':useitforlocal,
       // '/api/approval/compare':useitforlocal,
+      '/api/gfr/addGfrRule': useitforlocal,
       '/api/gfr/edit': {
         target: useitforlocal,
         rewrite: (path) => path.replace(/^\/api\/gfr\/edit\//, '/api/gfr/edit/'), // Add the dynamic part here

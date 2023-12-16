@@ -219,8 +219,9 @@ useEffect(() => {
           </div>
         </div>
         <div className="col-sm-12 col-lg-4" style={{textAlign:"center"}}>
-
-<button class="btn btn-primary mb-4" style={{width:"250px",height:"45px"}} type="submit">Add new document +</button>
+<Link to="/addNewRule">
+<button class="btn btn-primary mb-4" style={{width:"250px",height:"45px"}} type="submit">Add new Rule +</button>
+</Link>
 
 <br/>
 

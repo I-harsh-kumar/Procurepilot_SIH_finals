@@ -31,7 +31,7 @@ gfrRouter.get('/getGfrRule', async (req, res) => {
     try {
       const ruleId = req.params.id;
       const rule = await GFR.findOne({ _id: ruleId });
-      console.log("suraj");
+      // console.log("suraj");
       if (!rule) {
         return res.status(404).json({ error: 'Rule not found' });
       }
