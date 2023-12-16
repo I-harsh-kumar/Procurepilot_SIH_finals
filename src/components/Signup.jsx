@@ -4,6 +4,8 @@ import Axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../App';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -29,21 +31,35 @@ const Signup = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+
     if (password !== confirmPassword) {
-      console.log("Passwords do not match");
+      // Display an error toast if passwords do not match
+      toast.error('Passwords do not match');
       return;
     }
+
     try {
       const { data } = await Axios.post("/api/users/signup", {
         name,
         email,
         password,
       });
+
+      // Save user information to localStorage
       localStorage.setItem("userInfo", JSON.stringify(data));
-      dispatch({type:"USER",payload:true});
-      console.log('new user created');
+
+      // Dispatch action if needed
+      dispatch({ type: "USER", payload: true });
+
+      // Display a success toast
+      toast.success('New user created successfully');
+
+      // Navigate to the home page or any other desired route
       navigate('/');
     } catch (err) {
+      // Display an error toast if there is an API error
+      toast.error('Error creating a new user');
+
       console.log(err);
     }
   };

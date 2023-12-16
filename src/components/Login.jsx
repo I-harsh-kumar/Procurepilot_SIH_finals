@@ -5,13 +5,15 @@ import { useNavigate } from 'react-router-dom';
 // import { Link } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../App';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const navigate = useNavigate();
   const {state,dispatch} = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -21,10 +23,12 @@ const Login = () => {
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
       dispatch({type:"USER",payload:true});
-      console.log("user sucessfully loged in");
+      console.log("user sucessfully logged in");
+      toast.success("user sucessfully logged in");
       navigate('/');
     } catch (err) {
       console.log(err);
+      toast.error('Error in logging user');
     }
   };
   return (

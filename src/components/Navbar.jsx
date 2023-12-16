@@ -3,6 +3,8 @@ import { BsDatabaseFillCheck } from "react-icons/bs";
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../App';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -12,6 +14,7 @@ const Navbar = () => {
     localStorage.removeItem('userInfo');
     dispatch({type:"USER",payload:false});
     console.log("x:",state);
+    toast.success('user successfully Logged Out');
     navigate('/login');
   };
 
@@ -50,10 +53,10 @@ const Navbar = () => {
 
       <span style={{ fontSize: '20px', cursor: 'pointer' }} onClick={openNav}>&#9776;</span>
     </div>
-    <a class="navbar-brand" href="#">
+    <Link class="navbar-brand" to="/">
     <BsDatabaseFillCheck style={{ fontSize: '1.5em' }} className='mx-1'/>
     
-  </a>
+  </Link>
   <Link class="navbar-brand" to="/">Procurepilot</Link>
   
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

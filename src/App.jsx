@@ -1,7 +1,8 @@
 import React from 'react'
 import Navbar from "./components/Navbar"
 import { BrowserRouter as Router,Routes, Route } from 'react-router-dom';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Main from './components/Main'
 import Signup from './components/Signup';
 import Login from './components/Login';
@@ -36,7 +37,7 @@ const App = () => {
           <Route path="/admindashboard" element={<Admindashboard/>}/> 
         </Routes>
        
-
+        <ToastContainer />
       </div>
     </Router>
     </UserContext.Provider>
