@@ -9,7 +9,7 @@ export default defineConfig({
     proxy: {
       '/api/users/signup': useitforlocal,
       '/api/users/signin': useitforlocal,
-      '/api/users/getuserinfo': useitforlocal,
+      // '/api/users/getuserinfo': useitforlocal,
       '/api/gfr/getGfrRule': useitforlocal,
       '/api/approval/editrule':useitforlocal,
       // '/api/approval/compare':useitforlocal,
