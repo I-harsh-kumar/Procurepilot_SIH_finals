@@ -40,11 +40,12 @@ userRouter.get(
     } else {
       res.status(404).send({ message: 'User not found' });
     }
-  })
+  })  
 );
 userRouter.post(
   '/signin',
   expressAsyncHandler(async (req, res) => {
+    
     const user = await User.findOne({ email: req.body.email });
     if (user) {
       if (bcrypt.compareSync(req.body.password, user.password)) {

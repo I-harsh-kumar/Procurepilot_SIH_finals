@@ -69,6 +69,42 @@ approvalRouter.get('/getapprovaldata', async (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
+  approvalRouter.post(
+    '/updateApproval/:rowId',
+    expressAsyncHandler(async (req, res) => {
+
+      try {
+        const rowId = req.params.rowId;
+        console.log(req.body);
+        const { approvalField, name } = req.body;
+        console.log(approvalField);
+        
+        // Validate input
+        if (!rowId || !approvalField || !name) {
+          return res.status(400).json({ error: 'Invalid input' });
+        }
+  
+        // Find the approval record by rowId
+        const approval = await Approval.findById(rowId);
+  
+        // Check if the approval record exists
+        if (!approval) {
+          return res.status(404).json({ error: 'Approval record not found' });
+        }
+        console.log(approval);
+        // Update the specified approval field with the provided name
+        approval.approvalField = name;
+  
+        // Save the updated approval record
+        const updatedApproval = await approval.save();
+  
+        res.status(200).json(updatedApproval);
+      } catch (error) {
+        console.error('Error updating approval status:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+      }
+    })
+  );
   approvalRouter.get('/compare/:id', async (req, res) => {
     console.log('Reached /edit/:id endpoint');
     try {

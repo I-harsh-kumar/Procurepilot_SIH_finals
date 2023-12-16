@@ -7,16 +7,61 @@ import Axios from "axios";
 const App = () => {
   const [showApproveModal, setShowApproveModal] = useState(false);
   const [showRejectModal, setShowRejectModal] = useState(false);
+   const [name,setName]=useState("suraj_govt");
+  const [approvalName1,setApprovalName1]=useState("");
+  const [approvalName2,setApprovalName2]=useState("");
+  const [approvalName3,setApprovalName3]=useState("");
+  const [approvalInfo, setApprovalInfo] = useState(null);
+  // const [updateApproval, setUpdateApproval] = useState(null);
+    const updateApproval = async (row, approvalField) => {
+      try {
+        // Make your API call to update the approval status
+        const response = await fetch(`/api/approval/updateApproval/${row._id}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          // body: JSON.stringify({ [approvalField]: name }), 
+          body: JSON.stringify({ approvalField, name }),
+        });
+    
+        // Check if the API call was successful
+        if (response.ok) {
+          console.log(`Successfully updated ${approvalField} for ${row._id}`);
+          // You may want to update your local state or refetch data here
+        } else {
+          console.error(`Failed to update ${approvalField} for ${row._id}`);
+        }
+      } catch (error) {
+        console.error('Error updating approval status:', error);
+      }
+    };
+    
+    const handleApprove = (row) => {
+      // Check if approval1 is empty before showing the modal
+      setShowApproveModal(true);
+      if(row.approval1===''){
+      console.log("suraj");
+        
+        updateApproval(row,"approval1");
+      }
+      else if(row.approval2===''){
+        updateApproval(row,"approval2");
 
-  const handleApprove = () => {
-    setShowApproveModal(true);
-  };
-
-  const handleReject = () => {
-    setShowRejectModal(true);
-  };
+      }
+      else  if(row.approval3===''){
+        updateApproval(row,"approval3");
+      }
+    };
+    const handleReject = () => {
+      setShowRejectModal(true);
+    };
   
   const handleConfirmation = (confirmed, action) => {
+    // console.log(root._id);
+    // if(action==='approve'){
+    //   if(root.approval1)
+    // }
     if (action === 'approve') {
       setShowApproveModal(false);
     } else if (action === 'reject') {
@@ -98,14 +143,14 @@ const App = () => {
  
     },
   ]
-  const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useState('suraj_approver');
 
   const fetchUserInfo = async () => {
     try {
       const response = await Axios.get('/api/users/getuserinfo');
       
       setUserName(response.data.name);
-      console.log(userName);
+      // console.log(userName);
     } catch (error) {
       console.error(error);
     }
@@ -122,7 +167,7 @@ const fetchData1 = async () => {
     const response = await Axios.get('/api/approval/getapprovaldata');
     // Use response.data instead of data1
     setApprovalData(response.data.data);
-    console.log(response.data.data);
+    // console.log(response.data.data);
   } catch (err) {
     console.error(err);
   }
@@ -414,6 +459,9 @@ useEffect(() => {
       </th>
       <td data-label="Title" style={{ wordWrap: 'break-word' }}>
         {row.dataOriginal.title}
+       
+
+        
       </td>
       <td
         data-label="Description"
@@ -423,6 +471,7 @@ useEffect(() => {
       </td>
       <td data-label="CreatedAt" style={{ wordWrap: 'break-word' }}>
         {row.editAt}
+        
       </td>
       <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
         {row.editBy}
@@ -436,9 +485,10 @@ useEffect(() => {
           className="btn-success mx-1"
           style={{ width: '85px', height: '25px', fontSize: '10px', borderRadius: '5px' }}
           type="button"
-          onClick={handleApprove}
+           onClick={() => handleApprove(row)}
         >
           Approve
+          
         </button>
         <Modal show={showApproveModal} onHide={() => handleConfirmation(false, 'approve')}>
         <Modal.Header style={{ backgroundColor: 'lightgray', color: 'black' }}>
@@ -455,6 +505,7 @@ useEffect(() => {
           <Button variant="success" onClick={() => handleConfirmation(true, 'approve')}>
             Yes
           </Button>
+
         </Modal.Footer>
       </Modal>
       </td>
