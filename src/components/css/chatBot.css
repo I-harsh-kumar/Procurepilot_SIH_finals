@@ -1,14 +1,11 @@
-/* * {
-    font-size: 1.3vw;
-    font-family: "Epilogue", sans-serif;
-  } */
+
   
-  html {
-    /* color: #f1f1f1; */
+  /* html {
+  
 
     --scrollbarBG:  #f1f1f1;
     --thumbBG:  #f1f1f1;
-  }
+  } */
    .card12 {
     height: 45vw;
     width: 35vw;

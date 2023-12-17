@@ -1,8 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext} from 'react';
 import "./css/Login.css";
 import Axios from "axios";
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { UserContext } from '../App';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = () => {
+  const navigate = useNavigate();
+  const {state,dispatch} = useContext(UserContext);
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
   useEffect(() => {
     // Update the window height when the window is resized
@@ -24,19 +31,35 @@ const Signup = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+
     if (password !== confirmPassword) {
-      console.log("Passwords do not match");
+      // Display an error toast if passwords do not match
+      toast.error('Passwords do not match');
       return;
     }
+
     try {
       const { data } = await Axios.post("/api/users/signup", {
         name,
         email,
         password,
       });
+
+      // Save user information to localStorage
       localStorage.setItem("userInfo", JSON.stringify(data));
-      console.log('new user created');
+
+      // Dispatch action if needed
+      dispatch({ type: "USER", payload: true });
+
+      // Display a success toast
+      toast.success('New user created successfully');
+
+      // Navigate to the home page or any other desired route
+      navigate('/');
     } catch (err) {
+      // Display an error toast if there is an API error
+      toast.error('Error creating a new user');
+
       console.log(err);
     }
   };
@@ -98,7 +121,7 @@ const Signup = () => {
     </button>
   </div>
               </form>
-
+              <p style={{marginTop: "10%"}}>Already Have a account? <Link to="/login" style={{textDecoration: "underline"}}>Login</Link> </p>
               <div style={{width:"200px", height:"200px", borderRadius:"50%", border: "0.3px solid #1c1c1c", backgroundColor:"black", position:"absolute",right:'-100px',bottom:'-100px' }}></div> 
                   <div style={{width:"200px", height:"200px", borderRadius:"50%", border: "0.3px solid #1c1c1c", backgroundColor:"none", position:"absolute",right:'-100px',bottom:'-90px' }}></div> 
                   <div style={{width:"200px", height:"200px", borderRadius:"50%", border: "0.3px solid #1c1c1c", backgroundColor:"none", position:"absolute",right:'-100px',bottom:'-80px' }}></div> 

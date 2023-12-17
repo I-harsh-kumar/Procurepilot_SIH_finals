@@ -342,7 +342,8 @@ const fetchData1 = async () => {
     setApprovalData(response.data.data);
     approvalData.forEach((element) => {
       if (element.approval1 !== '' && element.approval2 !== '' && element.approval3 !== '') {
-        console.log('Non-empty approvals:', element.approval1, element.approval2, element.approval3);
+        console.log('Non-empty approvals:', element.approval1, element.approval2, element.approval3); 
+        
       }
     });
   //  console.log(approvalData);
