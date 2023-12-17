@@ -75,11 +75,10 @@ approvalRouter.get('/getapprovaldata', async (req, res) => {
 
       try {
         const rowId = req.params.rowId;
+        console.log("reached update approval");
         console.log(req.body);
-        const { approvalField, name } = req.body;
-        console.log(approvalField);
-        
-        // Validate input
+        const { approvalField, name,status,isapproval } = req.body;
+        // console.log(approvalField);
         if (!rowId || !approvalField || !name) {
           return res.status(400).json({ error: 'Invalid input' });
         }
@@ -91,13 +90,23 @@ approvalRouter.get('/getapprovaldata', async (req, res) => {
         if (!approval) {
           return res.status(404).json({ error: 'Approval record not found' });
         }
-        console.log(approval);
+        //console.log(approval);
         // Update the specified approval field with the provided name
-        approval.approvalField = name;
-  
+        if(status==="approved"){
+          approval[approvalField] = name;
+
+        }
+        else{
+          approval[approvalField] = "removedby_"+name;
+        }
+        
+        const approvalDateField = `${approvalField}Date`;
+       
+      approval[approvalDateField] = new Date();
         // Save the updated approval record
         const updatedApproval = await approval.save();
-  
+        // console.log(approval);
+        
         res.status(200).json(updatedApproval);
       } catch (error) {
         console.error('Error updating approval status:', error);

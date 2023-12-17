@@ -2,19 +2,22 @@ import React, { useState,useEffect } from 'react';
 import './css/dashboard.css';
 import { Link } from 'react-router-dom';
 import { Button, Modal } from 'react-bootstrap';
+import {  Table } from 'react-bootstrap'; // Import Table from Bootstrap
 
 import Axios from "axios";
 const App = () => {
   const [showApproveModal, setShowApproveModal] = useState(false);
   const [showRejectModal, setShowRejectModal] = useState(false);
    const [name,setName]=useState("suraj_govt");
-
+  const [id,setId]=useState({});
+  const [idcheck,setIdcheck]=useState({});
+  
   const [approvalName1,setApprovalName1]=useState("");
   const [approvalName2,setApprovalName2]=useState("");
   const [approvalName3,setApprovalName3]=useState("");
   const [approvalInfo, setApprovalInfo] = useState(null);
   // const [updateApproval, setUpdateApproval] = useState(null);
-    const updateApproval = async (row, approvalField) => {
+    const updateApproval = async (row, approvalField,status) => {
       try {
         // Make your API call to update the approval status
         const response = await fetch(`/api/approval/updateApproval/${row._id}`, {
@@ -23,7 +26,7 @@ const App = () => {
             'Content-Type': 'application/json',
           },
           // body: JSON.stringify({ [approvalField]: name }), 
-          body: JSON.stringify({ approvalField, name }),
+          body: JSON.stringify({ approvalField, name,status }),
         });
     
         // Check if the API call was successful
@@ -37,36 +40,194 @@ const App = () => {
         console.error('Error updating approval status:', error);
       }
     };
-    
+     
     const handleApprove = (row) => {
       // Check if approval1 is empty before showing the modal
+      console.log(row);
+      setId(row); 
       setShowApproveModal(true);
-      if(row.approval1===''){
-      // console.log("suraj");
-        
-        updateApproval(row,"approval1");
-      }
-      else if(row.approval2===''){
-        updateApproval(row,"approval2");
-
-      }
-      else  if(row.approval3===''){
-        updateApproval(row,"approval3");
-      }
+      
     };
-    const handleReject = () => {
+    const handleReject = (row) => {
+      setId(row); 
       setShowRejectModal(true);
     };
+    const determineAction = (approval) => {
+      if (approval && approval.startsWith('removedby_')) {
+        return 'Rejected';
+      } else if (approval) {
+        return 'Approved';
+      } else {
+        return 'Not Yet Reviewed';
+      }
+    };
+    const extractName = (approval) => {
+      if (!approval) {
+        return 'Not Yet Reviewed';
+      }
+    
+      return approval.startsWith('removedby_') ? approval.replace('removedby_', '') : approval;
+    };
+    
   // console.log(name);
   const handleConfirmation = (confirmed, action) => {
     // console.log(root._id);
     // if(action==='approve'){
     //   if(root.approval1)
     // }
+    console.log(id._id);
     if (action === 'approve') {
       setShowApproveModal(false);
+      if(id.approval1===''){
+        if((id.approval2!==name)&&(id.approval3!==name)){
+          // console.log(row.approval1);
+          // console.log(name);  
+          updateApproval(id,"approval1","approved");
+
+        
+        }
+        else{
+          console.log("u have already reviewed this change1")
+        }
+       
+      }
+      else if(id.approval2===''){
+        if((id.approval1!==name)&&(id.approval3!==name)){
+          // console.log(row.approval1);
+          console.log(name);  
+          updateApproval(id,"approval2","approved");
+           
+        
+        }
+        else{
+          console.log("u have already reviewed this change2")
+        }
+       
+
+      }
+      else  if(id.approval3===''){
+        // console.log("i am here");  
+        if((id.approval1!==name)&&(id.approval2!==name)){
+          console.log(id.approval1);
+          console.log(name);  
+          updateApproval(id,"approval3","approved");
+           
+        
+        }
+        else{
+          console.log("u have already reviewed this change3")
+        }
+      }
+
     } else if (action === 'reject') {
       setShowRejectModal(false);
+      if(id.approval1===''){
+        if((id.approval2!=="removedby_"+name)&&(id.approval3!=="removedby_"+name)){
+          // console.log(row.approval1);
+          // console.log(name);  
+          updateApproval(id,"approval1","delete");
+
+        
+        }
+        else{
+          console.log("u have already reviewed this change1")
+        }
+       
+      }
+      else if(id.approval2===''){
+        if((id.approval1!=="removedby_"+name)&&(id.approval3!=="removedby_"+name)){
+          // console.log(row.approval1);
+          console.log(name);  
+          updateApproval(id,"approval2","delete");
+           
+        
+        }
+        else{
+          console.log("u have already reviewed this change2")
+        }
+       
+
+      }
+      else  if(id.approval3===''){
+        // console.log("i am here");  
+        if((id.approval1!=="removedby_"+name)&&(id.approval2!=="removedby_"+name)){
+          console.log(id.approval1);
+          console.log(name);  
+          updateApproval(id,"approval3","delete");
+           
+        
+        }
+        else{
+          console.log("u have already reviewed this change3")
+        }
+      }
+
+    }
+
+    if (confirmed) {
+      // Handle the approval or rejection logic here
+      if (action === 'approve') {
+        console.log('Approved!');
+
+      } else if (action === 'reject') {
+        console.log('Rejected!');
+
+      }
+    } else {
+      console.log('Action canceled.');
+    }
+  };
+  const handleConfirmationdelete = (confirmed, action) => {
+    // console.log(root._id);
+    // if(action==='approve'){
+    //   if(root.approval1)
+    // }
+    console.log(id._id);
+    if (action === 'approve') {
+      setShowApproveModal(false);
+      if(id.approval1===''){
+        if((id.approval2!=="removedby_"+name)&&(id.approval3!=="removedby_"+name)){
+          // console.log(row.approval1);
+          // console.log(name);  
+          updateApproval(id,"approval1","delete");
+
+        
+        }
+        else{
+          console.log("u have already reviewed this change1")
+        }
+       
+      }
+      else if(id.approval2===''){
+        if((id.approval1!=="removedby_"+name)&&(id.approval3!=="removedby_"+name)){
+          // console.log(row.approval1);
+          console.log(name);  
+          updateApproval(id,"approval2","delete");
+           
+        
+        }
+        else{
+          console.log("u have already reviewed this change2")
+        }
+       
+
+      }
+      else  if(id.approval3===''){
+        // console.log("i am here");  
+        if((id.approval1!=="removedby_"+name)&&(id.approval2!=="removedby_"+name)){
+          console.log(id.approval1);
+          console.log(name);  
+          updateApproval(id,"approval3","delete");
+           
+        
+        }
+        else{
+          console.log("u have already reviewed this change3")
+        }
+      }
+    } else if (action === 'reject') {
+      setShowRejectModal(false);
+
     }
 
     if (confirmed) {
@@ -81,7 +242,18 @@ const App = () => {
       console.log('Action canceled.');
     }
   };
+  const [showCheckStatusModal, setShowCheckStatusModal] = useState(false);
 
+  // Function to open the Check Status modal
+  const handleOpenCheckStatusModal = (row) => {
+    setIdcheck(row);
+    setShowCheckStatusModal(true);
+  };
+
+  // Function to close the Check Status modal
+  const handleCheckStatusModalClose = () => {
+    setShowCheckStatusModal(false);
+  };
   const data = [
     {
       title: 'Requirement of Split AC Tender',
@@ -168,15 +340,24 @@ const fetchData1 = async () => {
     const response = await Axios.get('/api/approval/getapprovaldata');
     // Use response.data instead of data1
     setApprovalData(response.data.data);
-    // console.log(response.data.data);
+    approvalData.forEach((element) => {
+      if (element.approval1 !== '' && element.approval2 !== '' && element.approval3 !== '') {
+        console.log('Non-empty approvals:', element.approval1, element.approval2, element.approval3);
+      }
+    });
+  //  console.log(approvalData);
   } catch (err) {
     console.error(err);
   }
+  
 };
 
 useEffect(() => {
   fetchData1();
+  
+
 }, []);
+
 
    const [gfrData, setGfrData] = useState([]);
   const fetchData = async () => {
@@ -478,10 +659,10 @@ useEffect(() => {
       <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
         {row.editBy}
       </td>
-      <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
-        {/* {console.log({"surajidis__",(row._id)})} */}
-      <Link to={`/compare/${row._id}`}>  <button class="btn-dark mx-1" style={{width:"85px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">View Changes</button></Link>  
-      </td>
+        <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
+          {/* {console.log("surajidis__"+(row._id))} */}
+        <Link to={`/compare/${row._id}`}>  <button class="btn-dark mx-1" style={{width:"85px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">View Changes</button></Link>  
+        </td>
       <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
       <button
           className="btn-success mx-1"
@@ -492,6 +673,7 @@ useEffect(() => {
           Approve
           
         </button>
+        </td>
         <Modal show={showApproveModal} onHide={() => handleConfirmation(false, 'approve')}>
         <Modal.Header style={{ backgroundColor: 'lightgray', color: 'black' }}>
           <Modal.Title>Confirmation</Modal.Title>
@@ -504,19 +686,20 @@ useEffect(() => {
           <Button variant="secondary" onClick={() => handleConfirmation(false, 'approve')}>
             No
           </Button>
+         {/* {console.log(row._id)} */}
           <Button variant="success" onClick={() => handleConfirmation(true, 'approve')}>
             Yes
           </Button>
 
         </Modal.Footer>
       </Modal>
-      </td>
+      
       <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
       <button
           className="btn-danger mx-1"
           style={{ width: '85px', height: '25px', fontSize: '10px', borderRadius: '5px' }}
           type="button"
-          onClick={handleReject}
+          onClick={() => handleReject(row)}
         >
           Reject
         </button>
@@ -539,8 +722,50 @@ useEffect(() => {
       </Modal>
       </td>
       <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
-        <button class="btn-dark mx-1" style={{width:"85px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">Check status</button>
+        <button class="btn-dark mx-1" onClick={() => handleOpenCheckStatusModal(row)}style={{width:"85px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">Check status</button>
       </td>
+      <Modal show={showCheckStatusModal} onHide={handleCheckStatusModalClose}>
+        <Modal.Header style={{ backgroundColor: 'lightgray', color: 'black' }}>
+          <Modal.Title>Check Status</Modal.Title>
+          <Button variant="link" onClick={handleCheckStatusModalClose} style={{ fontSize: '25px', color: 'black' }}>
+            &times;
+          </Button>
+        </Modal.Header>
+        <Modal.Body>
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>Approval Stage</th>
+                <th>Name of Officer</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>{extractName(idcheck.approval1)}</td>
+                <td>{determineAction(idcheck.approval1)}</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>{extractName(idcheck.approval2)}</td>
+                <td>{determineAction(idcheck.approval2)}</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>{extractName(idcheck.approval3)}</td>
+                <td>{determineAction(idcheck.approval3)}</td>
+              </tr>
+              {/* Add more rows as needed */}
+            </tbody>
+          </Table>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCheckStatusModalClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </tr>
   ))
 ) : (
