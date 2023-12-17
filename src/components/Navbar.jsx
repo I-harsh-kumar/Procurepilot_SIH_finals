@@ -51,13 +51,15 @@ const Navbar = () => {
         <a href="#">Profile</a> */}
       </div>
 
-      <span style={{ fontSize: '20px', cursor: 'pointer' }} onClick={openNav}>&#9776;</span>
+      <span style={{ fontSize: '20px', cursor: 'pointer',color:"#5bc0de" }} onClick={openNav}>&#9776;</span>
     </div>
     <Link class="navbar-brand" to="/">
-    <BsDatabaseFillCheck style={{ fontSize: '1.5em' }} className='mx-1'/>
-    
+    {/* <BsDatabaseFillCheck style={{ fontSize: '1.5em' }} className='mx-1'/> */}
+    {/* <img src={/logo.png}></img> */}
+    <img style={{width:"50px", height:"50px",marginLeft:"20px"}}  src= {'/public/logo.png  '} alt='image'/>
+
   </Link>
-  <Link class="navbar-brand" to="/">Procurepilot</Link>
+  <Link style={{fontSize:"23px"}} class="navbar-brand" to="/">Procurepilot</Link>
   
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Axios from 'axios';
 
-const Edit = () => {
+const Delete = () => {
   const [rule, setRule] = useState(null);
   const { id } = useParams();
 
@@ -125,7 +125,8 @@ const Edit = () => {
   const handleSave = () => {
     setUserData((prevUserData) => ({
       ...prevUserData,
-      isEdit: true,
+      isEdit: false,
+      isDelete:true,
     }));
   };
   console.log(userData.dataChanged);
@@ -143,31 +144,10 @@ const Edit = () => {
         </div>
         <div className="card-body">
           <blockquote className="blockquote mb-0">
+            
+           
             <div className="mb-3">
-              <label htmlFor="rule" className="form-label">Rule:</label>
-              <input
-                 style={{border:"1px solid #ced4da"}}
-                type="text"
-                name="rule"
-                value={editedRule.rule}
-                onChange={handleInputChange}
-                className="form-control"
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="heading" className="form-label">Heading:</label>
-              <input
-                 style={{border:"1px solid #ced4da"}}
-
-                type="text"
-                name="heading"
-                value={editedRule.heading}
-                onChange={handleInputChange}
-                className="form-control"
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor="description" className="form-label">Description:</label>
+              <label htmlFor="description" className="form-label">Reason for Deletion:</label>
               <textarea
                 name="description"
                 value={editedRule.description}
@@ -176,20 +156,9 @@ const Edit = () => {
                 style={{ width: '100%', height: '300px' }}
               />
             </div>
-            <div className="mb-3">
-              <label htmlFor="category" className="form-label">Category:</label>
-              <input
-                 style={{border:"1px solid #ced4da"}}
+           
 
-                type="text"
-                name="category"
-                value={editedRule.category}
-                onChange={handleInputChange}
-                className="form-control"
-              />
-            </div>
-
-            <button onClick={handleSave} type="submit" style={{float:"right"}} className="btn btn-success mb-4">Request for Approval</button>
+            <button onClick={handleSave} type="submit" style={{float:"right"}} className="btn btn-danger mb-4">Request for Deletion</button>
           </blockquote>
         </div>
         </form>
@@ -198,4 +167,4 @@ const Edit = () => {
   );
 };
 
-export default Edit;
+export default Delete;

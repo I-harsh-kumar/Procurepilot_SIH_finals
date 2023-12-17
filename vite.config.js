@@ -22,6 +22,10 @@ export default defineConfig({
         target: useitforlocal,
         rewrite: (path) => path.replace(/^\/api\/gfr\/edit\//, '/api/gfr/edit/'), // Add the dynamic part here
       },
+      '/api/gfr/delete': {
+        target: useitforlocal,
+        rewrite: (path) => path.replace(/^\/api\/gfr\/delete\//, '/api/gfr//'), // Add the dynamic part here
+      },
       '/api/gfr/view': {
         target: useitforlocal,
         rewrite: (path) => path.replace(/^\/api\/gfr\/edit\//, '/api/gfr/edit/'), // Add the dynamic part here

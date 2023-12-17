@@ -14,6 +14,8 @@ import AddNewRule from './components/AddNewRule';
 import ChatBot from './components/chatBot';
 import { createContext, useState,useReducer } from 'react';
 import { intialState,reducer } from './reducer/useReducer';
+// import { Delete } from '@mui/icons-material';
+import Delete from "./components/Delete"
 
 // import { Edit } from '@mui/icons-material';
 export const UserContext=createContext();
@@ -29,6 +31,8 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/edit/:id" element={<Edit />} />
+          <Route path="/delete/:id" element={<Delete />} />
+
           <Route path="/view/:id" element={<View />} />
           <Route path="/compare/:id" element={<CompareChanges/>}/>
           <Route path="/addNewRule" element={<AddNewRule/>} />

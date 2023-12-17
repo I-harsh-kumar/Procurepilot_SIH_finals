@@ -10,6 +10,10 @@ const App = () => {
   const [showRejectModal, setShowRejectModal] = useState(false);
    const [name,setName]=useState("suraj_govt");
   const [id,setId]=useState({});
+  const[deletemessage,setDeletemessage]=useState("");
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
+
   const [idcheck,setIdcheck]=useState({});
   
   const [approvalName1,setApprovalName1]=useState("");
@@ -17,7 +21,7 @@ const App = () => {
   const [approvalName3,setApprovalName3]=useState("");
   const [approvalInfo, setApprovalInfo] = useState(null);
   // const [updateApproval, setUpdateApproval] = useState(null);
-    const updateApproval = async (row, approvalField,status) => {
+    const updateApproval = async (row, approvalField,status,isapproval,final) => {
       try {
         // Make your API call to update the approval status
         const response = await fetch(`/api/approval/updateApproval/${row._id}`, {
@@ -26,7 +30,7 @@ const App = () => {
             'Content-Type': 'application/json',
           },
           // body: JSON.stringify({ [approvalField]: name }), 
-          body: JSON.stringify({ approvalField, name,status }),
+          body: JSON.stringify({ approvalField, name,status,isapproval,final }),
         });
     
         // Check if the API call was successful
@@ -40,7 +44,16 @@ const App = () => {
         console.error('Error updating approval status:', error);
       }
     };
-     
+    const handleDeleteConfirmation = (confirmed) => {
+      if (confirmed) {
+        // Delete logic...
+        setModalMessage('Delete confirmed. It is a delete request.');
+      } else {
+        setModalMessage('Delete canceled.');
+      }
+      setShowDeleteModal(false);
+    };
+  
     const handleApprove = (row) => {
       // Check if approval1 is empty before showing the modal
       console.log(row);
@@ -75,14 +88,21 @@ const App = () => {
     // if(action==='approve'){
     //   if(root.approval1)
     // }
-    console.log(id._id);
-    if (action === 'approve') {
-      setShowApproveModal(false);
+
+    console.log(confirmed);
+    setShowApproveModal(false);
+    if (action === 'approve'&&confirmed) {
+      
+     
+
+     
+      
+     
       if(id.approval1===''){
         if((id.approval2!==name)&&(id.approval3!==name)){
           // console.log(row.approval1);
           // console.log(name);  
-          updateApproval(id,"approval1","approved");
+          updateApproval(id,"approval1","approved","","");
 
         
         }
@@ -94,8 +114,8 @@ const App = () => {
       else if(id.approval2===''){
         if((id.approval1!==name)&&(id.approval3!==name)){
           // console.log(row.approval1);
-          console.log(name);  
-          updateApproval(id,"approval2","approved");
+          // console.log(name);  
+          updateApproval(id,"approval2","approved","","");
            
         
         }
@@ -110,7 +130,7 @@ const App = () => {
         if((id.approval1!==name)&&(id.approval2!==name)){
           console.log(id.approval1);
           console.log(name);  
-          updateApproval(id,"approval3","approved");
+          updateApproval(id,"approval3","approved","","");
            
         
         }
@@ -118,14 +138,17 @@ const App = () => {
           console.log("u have already reviewed this change3")
         }
       }
-
-    } else if (action === 'reject') {
+      window.location.reload();
+    } else {
       setShowRejectModal(false);
+      if (action === 'reject' && confirmed) {
+      
+      
       if(id.approval1===''){
         if((id.approval2!=="removedby_"+name)&&(id.approval3!=="removedby_"+name)){
           // console.log(row.approval1);
           // console.log(name);  
-          updateApproval(id,"approval1","delete");
+          updateApproval(id,"approval1","delete","","");
 
         
         }
@@ -138,7 +161,7 @@ const App = () => {
         if((id.approval1!=="removedby_"+name)&&(id.approval3!=="removedby_"+name)){
           // console.log(row.approval1);
           console.log(name);  
-          updateApproval(id,"approval2","delete");
+          updateApproval(id,"approval2","delete","","");
            
         
         }
@@ -153,7 +176,7 @@ const App = () => {
         if((id.approval1!=="removedby_"+name)&&(id.approval2!=="removedby_"+name)){
           console.log(id.approval1);
           console.log(name);  
-          updateApproval(id,"approval3","delete");
+          updateApproval(id,"approval3","delete","","");
            
         
         }
@@ -161,8 +184,8 @@ const App = () => {
           console.log("u have already reviewed this change3")
         }
       }
-
-    }
+      window.location.reload();
+    }}
 
     if (confirmed) {
       // Handle the approval or rejection logic here
@@ -189,7 +212,7 @@ const App = () => {
         if((id.approval2!=="removedby_"+name)&&(id.approval3!=="removedby_"+name)){
           // console.log(row.approval1);
           // console.log(name);  
-          updateApproval(id,"approval1","delete");
+          updateApproval(id,"approval1","delete","","");
 
         
         }
@@ -202,7 +225,7 @@ const App = () => {
         if((id.approval1!=="removedby_"+name)&&(id.approval3!=="removedby_"+name)){
           // console.log(row.approval1);
           console.log(name);  
-          updateApproval(id,"approval2","delete");
+          updateApproval(id,"approval2","delete","","");
            
         
         }
@@ -217,7 +240,7 @@ const App = () => {
         if((id.approval1!=="removedby_"+name)&&(id.approval2!=="removedby_"+name)){
           console.log(id.approval1);
           console.log(name);  
-          updateApproval(id,"approval3","delete");
+          updateApproval(id,"approval3","delete","","");
            
         
         }
@@ -243,7 +266,12 @@ const App = () => {
     }
   };
   const [showCheckStatusModal, setShowCheckStatusModal] = useState(false);
-
+  const handleViewChanges = (row) => {
+    
+      setModalMessage(row.dataChanged.description);
+      setShowDeleteModal(true);
+    
+  };
   // Function to open the Check Status modal
   const handleOpenCheckStatusModal = (row) => {
     setIdcheck(row);
@@ -340,11 +368,46 @@ const fetchData1 = async () => {
     const response = await Axios.get('/api/approval/getapprovaldata');
     // Use response.data instead of data1
     setApprovalData(response.data.data);
-    approvalData.forEach((element) => {
-      if (element.approval1 !== '' && element.approval2 !== '' && element.approval3 !== '') {
-        console.log('Non-empty approvals:', element.approval1, element.approval2, element.approval3); 
+    // console.log(response.data.data );
+    response.data.data.forEach((element) => {
+      const { approval1, approval2, approval3 } = element;
+    
+      if (
+        approval1 !== '' && !approval1.startsWith('removedby_') &&
+        approval2 !== '' && !approval2.startsWith('removedby_') &&
+        approval3 !== '' && !approval3.startsWith('removedby_')
+      ) {
+        // All three approvals have normal names without prefix - considered approved
+        console.log('Approved:', approval1, approval2, approval3);
+        updateApproval(element,"varupdate","varupdate","true","");
+
         
+      } else if (
+        (approval1.startsWith('removedby_') && approval2.startsWith('removedby_')) ||
+        (approval1.startsWith('removedby_') && approval3.startsWith('removedby_')) ||
+        (approval2.startsWith('removedby_') && approval3.startsWith('removedby_'))
+      ) {
+        // Either two of them have removedby_ prefix - considered rejected
+        // console.log('Rejected:', approval1, approval2, approval3);
+        // console.log("suraj")
+        updateApproval(element,"varupdate","varupdate","false","");
+
+      } else if (approval1 === '' && approval2 === '' && approval3 === '') {
+        // All three are empty - not yet reviewed
+        console.log('Not yet reviewed');
+        updateApproval(element,"varupdate","varupdate","not yet reviewed","");
+
+      } else {
+        // Any other cases
+        console.log('Unknown status');
+        updateApproval(element,"varupdate","varupdate","not yet reviewed","");
+
       }
+      // console.log(element.isApproval);
+
+        updateApproval(element,"varupdate","varupdate","",element.isApproval);
+      
+      
     });
   //  console.log(approvalData);
   } catch (err) {
@@ -518,7 +581,16 @@ useEffect(() => {
       </button>
     </Link>
 {/* <button class="btn-primary mx-1" style={{width:"45px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">Edit</button> */}
-<button class="btn-danger" style={{width:"45px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">Delete</button>
+<Link to={`/delete/${row._id}`}>
+      <button 
+        className="btn-danger"
+        style={{ width: "45px", height: "25px", fontSize: "10px", borderRadius: "5px" }}
+        type="button"
+      >
+        Delete
+      </button>
+    </Link>
+{/* <button class="btn-danger" style={{width:"45px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">Delete</button> */}
                       
                     </td>
                   </tr>
@@ -660,10 +732,38 @@ useEffect(() => {
       <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
         {row.editBy}
       </td>
-        <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
-          {/* {console.log("surajidis__"+(row._id))} */}
-        <Link to={`/compare/${row._id}`}>  <button class="btn-dark mx-1" style={{width:"85px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">View Changes</button></Link>  
-        </td>
+      <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
+  {row.isDelete ? (
+    // Render text or other content when isDelete is true
+    <button className="btn-dark mx-1" onClick={() => handleViewChanges(row)} style={{ width: "85px", height: "25px", fontSize: "10px", borderRadius: "5px" }} type="submit">
+    View Changes
+  </button>
+  ) : (
+    // Render Link component when isDelete is false
+    <Link to={`/compare/${row._id}`}>
+      <button className="btn-dark mx-1" style={{ width: "85px", height: "25px", fontSize: "10px", borderRadius: "5px" }} type="submit">
+        View Changes
+      </button>
+    </Link>
+  )}
+</td>
+<Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)}>
+        <Modal.Header style={{ backgroundColor: 'lightgray', color: 'black' }}>
+          <Modal.Title>Confirmation</Modal.Title>
+          <Button variant="link" onClick={() => setShowDeleteModal(false)} style={{ fontSize: "25px", color: 'black' }}>
+            &times;
+          </Button>
+        </Modal.Header>
+        <Modal.Body>Reason for Deletion:</Modal.Body>
+
+        <Modal.Body>{modalMessage}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => handleDeleteConfirmation(false)}>
+            Got it
+          </Button>
+         
+        </Modal.Footer>
+      </Modal>
       <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
       <button
           className="btn-success mx-1"

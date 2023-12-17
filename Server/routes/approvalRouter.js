@@ -117,18 +117,33 @@ approvalRouter.get('/getapprovaldata', async (req, res) => {
          //console.log(approval["isApproval"]);
       //  console.log(approval.dataOriginal.id)
       //  console.log(final)
+      console.log(approval.isDelete);
+     
        if (final === "true") {
-        console.log("true")
+        // console.log("true")
+        if (approval.isDelete) {
+          console.log("i am in")
+          const rule = await GFR.findOneAndDelete({ _id: approval.dataOriginal.id });
+          if (rule) {
+            console.log('Rule deleted successfully.');
+            // Now 'rule' contains the deleted document if you need to reference it
+        } else {
+            console.log('Rule not found.');
+        }
+      }
+      else{
         const rule = await GFR.findOne({ _id: approval.dataOriginal.id });
         rule.description = approval.dataChanged.description;
         rule.rule = approval.dataChanged.rule;
         rule.heading = approval.dataChanged.title;
         await rule.save();
+      }
+        
         await Approval.deleteOne({ _id: approval._id }); // Use remove() to delete the record
         return res.status(200).json({ message: 'Approval record deleted successfully' });
       } 
       else if(final==='false'){
-        console.log("false")
+        // console.log("false")
         await Approval.deleteOne({ _id: approval._id }); // Use remove() to delete the record
         return res.status(200).json({ message: 'Approval record deleted successfully' });
         
