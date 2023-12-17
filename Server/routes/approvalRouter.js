@@ -2,6 +2,7 @@ const express = require('express');
 const expressAsyncHandler = require('express-async-handler');
 const Approval = require('../models/approvalModel.js');
 const { isAuth, isAdmin } = require('../utils.js');
+const GFR = require('../models/gfrModel.js');
 
 const approvalRouter = express.Router();
 
@@ -75,9 +76,9 @@ approvalRouter.get('/getapprovaldata', async (req, res) => {
 
       try {
         const rowId = req.params.rowId;
-        console.log("reached update approval");
-        console.log(req.body);
-        const { approvalField, name,status,isapproval } = req.body;
+        //console.log("reached update approval");
+        // console.log(req.body);
+        const { approvalField, name,status,isapproval,final} = req.body;
         // console.log(approvalField);
         if (!rowId || !approvalField || !name) {
           return res.status(400).json({ error: 'Invalid input' });
@@ -85,7 +86,7 @@ approvalRouter.get('/getapprovaldata', async (req, res) => {
   
         // Find the approval record by rowId
         const approval = await Approval.findById(rowId);
-  
+        // console.log(approval);
         // Check if the approval record exists
         if (!approval) {
           return res.status(404).json({ error: 'Approval record not found' });
@@ -94,20 +95,50 @@ approvalRouter.get('/getapprovaldata', async (req, res) => {
         // Update the specified approval field with the provided name
         if(status==="approved"){
           approval[approvalField] = name;
-
+          const approvalDateField = `${approvalField}Date`;
+        
+          approval[approvalDateField] = new Date();
         }
         else{
           approval[approvalField] = "removedby_"+name;
+          const approvalDateField = `${approvalField}Date`;
+        
+      approval[approvalDateField] = new Date();
         }
         
-        const approvalDateField = `${approvalField}Date`;
-       
-      approval[approvalDateField] = new Date();
-        // Save the updated approval record
-        const updatedApproval = await approval.save();
-        // console.log(approval);
         
+        // Save the updated approval record
+       // console.log(isapproval)
+        if(isapproval!==''){
+          //console.log("suraj");
+          approval["isApproval"]=isapproval;
+        
+        }
+         //console.log(approval["isApproval"]);
+      //  console.log(approval.dataOriginal.id)
+      //  console.log(final)
+       if (final === "true") {
+        console.log("true")
+        const rule = await GFR.findOne({ _id: approval.dataOriginal.id });
+        rule.description = approval.dataChanged.description;
+        rule.rule = approval.dataChanged.rule;
+        rule.heading = approval.dataChanged.title;
+        await rule.save();
+        await Approval.deleteOne({ _id: approval._id }); // Use remove() to delete the record
+        return res.status(200).json({ message: 'Approval record deleted successfully' });
+      } 
+      else if(final==='false'){
+        console.log("false")
+        await Approval.deleteOne({ _id: approval._id }); // Use remove() to delete the record
+        return res.status(200).json({ message: 'Approval record deleted successfully' });
+        
+      }
+      else {
+        const updatedApproval = await approval.save();
         res.status(200).json(updatedApproval);
+      }
+        
+        // res.status(200).json(updatedApproval);
       } catch (error) {
         console.error('Error updating approval status:', error);
         res.status(500).json({ error: 'Internal Server Error' });

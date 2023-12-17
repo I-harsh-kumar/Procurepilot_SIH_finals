@@ -26,7 +26,7 @@ const mongoose = require('mongoose');
       approval2Date: { type: Date },
       approval3: { type: String, default: '' },
       approval3Date: { type: Date },
-      isApproval: { type: Boolean, required: true },
+      isApproval: { type: String, default: "to be reviewed" },
     },
     {
       timestamps: true,
