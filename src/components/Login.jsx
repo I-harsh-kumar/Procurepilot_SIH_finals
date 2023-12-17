@@ -1,11 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState,useContext} from 'react'
 import Axios from 'axios';
 import "./css/login.css"
+import { useNavigate } from 'react-router-dom';
+// import { Link } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
+import { UserContext } from '../App';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
+  const navigate = useNavigate();
+  const {state,dispatch} = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -14,9 +22,13 @@ const Login = () => {
         password,
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
-      console.log("user sucessfully loged in");
+      dispatch({type:"USER",payload:true});
+      console.log("user sucessfully logged in");
+      toast.success("user sucessfully logged in");
+      navigate('/');
     } catch (err) {
       console.log(err);
+      toast.error('Error in logging user');
     }
   };
   return (
@@ -68,8 +80,7 @@ const Login = () => {
       Login 
     </button> 
     </form>
-  
-                  <p style={{marginTop: "10%"}}>Dont have an account?<a href="" style={{textDecoration: "underline"}}>Signup</a> </p>
+                  <p style={{marginTop: "10%"}}>Dont have an account? <Link to="/signup" style={{textDecoration: "underline"}}>Signup</Link> </p>
                 
                   <div style={{width:"200px", height:"200px", borderRadius:"50%", border: "0.3px solid #1c1c1c", backgroundColor:"black", position:"absolute",right:'-100px',bottom:'-100px' }}></div> 
                   <div style={{width:"200px", height:"200px", borderRadius:"50%", border: "0.3px solid #1c1c1c", backgroundColor:"none", position:"absolute",right:'-100px',bottom:'-90px' }}></div> 

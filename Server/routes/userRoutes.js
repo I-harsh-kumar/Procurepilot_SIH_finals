@@ -27,21 +27,6 @@ userRouter.post(
   })
 );
 //existing user
-// userRouter.get(
-//   '/getuserinfo',
-  
-//   expressAsyncHandler(async (req, res) => {
-//     console.log();
-
-//     const user = await User.findById(req.user._id);
-//     if (user) {
-//       console.log(user.name);
-//       res.send({ name: user.name });
-//     } else {
-//       res.status(404).send({ message: 'User not found' });
-//     }
-//   })
-// );
 userRouter.post(
   '/signin',
   expressAsyncHandler(async (req, res) => {
@@ -62,6 +47,7 @@ userRouter.post(
     res.status(401).send({ message: 'Invalid email or password' });
   })
 );
+//logout user
 
 module.exports=userRouter;
 

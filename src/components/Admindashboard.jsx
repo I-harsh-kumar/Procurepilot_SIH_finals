@@ -270,8 +270,8 @@ useEffect(() => {
 </Link>
 
 <br/>
+<Link to="/searchByAI"><button class="btn btn-primary" style={{width:"250px",height:"45px",backgroundColor:"007494",color:"FFFFFF"}} type="submit">Search By AI</button></Link>
 
-<button class="btn btn-dash" style={{width:"250px",height:"45px"}} type="submit">Remove document -</button>
 
 </div>
 
