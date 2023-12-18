@@ -34,8 +34,7 @@ const Navbar = () => {
         {state?<>
           {/* <a href="#">Manage Repository</a> */}
         <Link to="/admin/guidelines">Manage Repository</Link>
-
-        <a href="#">Version Control</a>
+        <Link to="/version">Version Control</Link>
         <Link to="/users/guidelines">Guidelines</Link>
 
         <a href="#">Get Tender Score</a>
@@ -43,7 +42,7 @@ const Navbar = () => {
         <a href="#">Profile</a>
         </>:<>
         <Link to="/users/guidelines">Guidelines</Link>
-        <a href="#">Recent Guidelines</a>
+        <Link to="/recentguidelines">Recent Guidelines</Link> 
         </>}
         {/* <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
         <a href="#">Manage Repository</a>

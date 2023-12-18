@@ -77,41 +77,41 @@ const Main = () => {
       {/* <!-- Content 1 --> */}
       <div class="swiper-slide slide-one">
         <div>
-          <h2>Centralized Repository</h2>
+          <h2 style={{textAlign:"center"}}>Centralized Repository</h2>
           <p>
           procurepiolet organizes all essential documents and regulations in one place for easy access.
           </p>
-          <a href="#">View Detail</a>
+          {/* <a href="#">View Detail</a> */}
         </div>
       </div>
       {/* <!-- Content 2 --> */}
       <div class="swiper-slide slide-two">
-        <div>
-          <h2>Get tender score</h2>
-          <p>
+        <div className='mb-3'>
+          <h2 style={{textAlign:"center"}}>Get tender score</h2>
+          <p style={{textAlign:"center"}} >
           procurepiolet mark adopted documents on the basis of compliance with the guidelines and provide a Tender score on the basis. It further asses the compliance of the tender.
           </p>
-          <a href="#">View Detail</a>
+          {/* <a href="#">View Detail</a> */}
         </div>
       </div>
       {/* <!-- Content 3 --> */}
       <div class="swiper-slide slide-three">
         <div>
-          <h2>Advance Search & Filter</h2>
+          <h2 style={{textAlign:"center"}}>Advance Search & Filter</h2>
           <p>
           procurepiolet effortlessly find specific documents through powerful search and custom filters.
           </p>
-          <a href="#">View Detail</a>
+          {/* <a href="#">View Detail</a> */}
         </div>
       </div>
       {/* <!-- Content 4 --> */}
       <div class="swiper-slide slide-four">
         <div>
-          <h2>Interactive Chatbots</h2>
+          <h2 style={{textAlign:"center"}}>Interactive Chatbots</h2>
           <p>
           Unlock knowledge effortlessly! Our interactive chatbox seamlessly searches through our repository and knowledge base, delivering accurate answers to your queries. Experience a smarter way to access information and stay informed.
           </p>
-          <a href="#">View Detail</a>
+          {/* <a href="#">View Detail</a> */}
         </div>
       </div>
     </div>

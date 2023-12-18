@@ -474,9 +474,13 @@ useEffect(() => {
 
   return (
     <div className="container-fluid">
+
       <div className="row mt-5">
+        
         <div className="col-sm-12 col-lg-12">
           <div className="search-container">
+    <h2 style={{background:"white"}} className='mt-1 mb-5'>Guidelines & Rules</h2>
+
             <div>
               <input
                 type="text"

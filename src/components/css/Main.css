@@ -98,7 +98,7 @@
 .swiper-slide h2 {
   color: #1c1c1c ;
   -webkit-text-stroke: #ffffff;
-  -webkit-text-stroke-width: 0.4px;
+  /* -webkit-text-stroke-width: 0.1px; */
   font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 20px;
@@ -144,24 +144,44 @@
 
 .slide-one {
   background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
-    url(public/centarlizedrepo.png) no-repeat 50% 50% / cover;
+    url(public/centarlizedrepo.png) no-repeat 50% 50%/cover ;
 }
-
+@media screen and (min-width: 1280px) {
+  .slide-one {
+    background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
+      url(public/centarlizedrepo.png) no-repeat 0% 0%/cover ;
+  }
+}
 .slide-two {
   background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
     url(public/getts2.png) no-repeat 50% 50% / cover;
 }
-
+@media screen and (min-width: 1280px) {
+  .slide-two {
+    background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
+      url(public/getts2.png) no-repeat 0% 0%/cover ;
+  }
+}
 .slide-three {
   background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
     url(public/searchanfilter.png) no-repeat 50% 50% / cover;
 }
-
+@media screen and (min-width: 1280px) {
+  .slide-three {
+    background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
+      url(public/searchanfilter.png) no-repeat 0% 0%/cover ;
+  }
+}
 .slide-four {
   background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
     url(public/interactivechatbot.png) no-repeat 50% 50% / cover;
 }
-
+@media screen and (min-width: 1280px) {
+  .slide-four {
+    background: linear-gradient(to top, #0f2027, #203a4300, #2c536400),
+      url(public/interactivechatbot.png) no-repeat 0% 0%/cover ;
+  }
+}
 /* Responsive Design */
 @media (min-width: 800px) {
   .container-new {

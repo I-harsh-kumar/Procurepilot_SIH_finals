@@ -621,7 +621,7 @@ useEffect(() => {
 
                 <div style={{ fontSize: '14px', width: '30%' }} className="table-cell">
                   <div>Updated By</div>
-              
+                  
                   <div>{item.updatedBy}</div>
                   <div className="">Updated Start</div>
                   <div>{item.updatedStart}</div>
@@ -836,8 +836,7 @@ useEffect(() => {
         <Modal.Body>
           <Table striped bordered hover>
             <thead>
-              <tr>  
-                
+              <tr>
                 <th>Approval Stage</th>
                 <th>Name of Officer</th>
                 <th>Action</th>

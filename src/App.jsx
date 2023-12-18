@@ -18,6 +18,7 @@ import { intialState,reducer } from './reducer/useReducer';
 import Delete from "./components/Delete"
 import Guidelines from './components/Guidelines';
 import Guidelinesadmin from './components/Guidelinesadmin';
+import RecentGuidelines from './components/RecentGuidelines';
 
 
 // import { Edit } from '@mui/icons-material';
@@ -44,6 +45,8 @@ const App = () => {
 
           
           <Route path="/admindashboard" element={<Admindashboard/>}/> 
+          <Route path="/recentguidelines" element={<RecentGuidelines/>}/> 
+
           <Route path="/users/guidelines" element={<Guidelines/>}/>
         </Routes>
        
