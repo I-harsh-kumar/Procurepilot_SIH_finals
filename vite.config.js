@@ -14,10 +14,18 @@ export default defineConfig({
       '/api/approval/editrule':useitforlocal,
       // '/api/approval/compare':useitforlocal,
       '/api/gfr/addGfrRule': useitforlocal,
+      "/api/approval/updateApproval": {
+        target: useitforlocal,
+        rewrite: (path) => path.replace(/^\/api\/approval\/updateApproval\//, '/api/approval/updateApproval/'), // Add the dynamic part here
+      },
       '/api/gfr/getNewData': useitforlocal,
       '/api/gfr/edit': {
         target: useitforlocal,
         rewrite: (path) => path.replace(/^\/api\/gfr\/edit\//, '/api/gfr/edit/'), // Add the dynamic part here
+      },
+      '/api/gfr/delete': {
+        target: useitforlocal,
+        rewrite: (path) => path.replace(/^\/api\/gfr\/delete\//, '/api/gfr//'), // Add the dynamic part here
       },
       '/api/gfr/view': {
         target: useitforlocal,
