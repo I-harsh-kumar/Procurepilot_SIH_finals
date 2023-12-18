@@ -41,12 +41,15 @@ const Navbar = () => {
       console.log("x3",x);
       return(
         <>
-          <a href="#">Manage Repository</a>
+        <Link to="/admin/guidelines">Manage Repository</Link>
+          
         <a href="#">Version Control</a>
         <Link to="/users/guidelines">Guidelines</Link>
 
         <a href="#">Get Tender Score</a>
-        <a href="#">Recent Guidelines</a>
+    <Link to="/recentguidelines">Recent Guidelines</Link>
+
+     
         <Link to="/profile">Profile</Link>
         </>
       )
@@ -54,8 +57,9 @@ const Navbar = () => {
     else{
       return(
         <>
-        <a href="#">Guidelines</a>
-        <a href="#">Recent Guidelines</a>
+         <Link to="/users/guidelines">Guidelines</Link>
+    <Link to="/recentguidelines">Recent Guidelines</Link>
+      
         </>
       )
     }
@@ -92,7 +96,7 @@ const x=cheackISLoggedIn();
     <>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div>
-      <div id="mySidenav" className={`sidenav ${isSidebarOpen ? 'open' : ''}`}>
+      <div id="mySidenav" className={`sidenav ${isSidebarOpen ? 'open' : ''}`} style={{zIndex:"7"}}>
       <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
        <Sidenav/>
       </div>
