@@ -512,7 +512,10 @@ useEffect(() => {
     handleSearch1();
     console.log(searchResults1);
   }, [approvalData, searchResults1]);
-
+  const handleRowClick = (rule) => {
+    // console.log(Row clicked: ${rule});
+    // Implement your row click logic here
+  };
   return (
     <div className="container-fluid">
       <div className="row mt-5">
@@ -925,21 +928,52 @@ useEffect(() => {
                       </Modal.Footer>
                     </Modal>
                   </td>
-                  <td data-label="UpdatedBy" style={{ wordWrap: "break-word" }}>
-                    <button
-                      class="btn-dark mx-1"
-                      style={{
-                        width: "85px",
-                        height: "25px",
-                        fontSize: "10px",
-                        borderRadius: "5px",
-                      }}
-                      type="submit"
-                    >
-                      Check status
-                    </button>
-                  </td>
-                </tr>
+                  <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
+        <button class="btn-dark mx-1" onClick={() => handleOpenCheckStatusModal(row)}style={{width:"85px",height:"25px",fontSize:"10px",borderRadius:"5px"}} type="submit">Check status</button>
+      </td>
+      <Modal show={showCheckStatusModal} onHide={handleCheckStatusModalClose}>
+        <Modal.Header style={{ backgroundColor: 'lightgray', color: 'black' }}>
+          <Modal.Title>Check Status</Modal.Title>
+          <Button variant="link" onClick={handleCheckStatusModalClose} style={{ fontSize: '25px', color: 'black' }}>
+            &times;
+          </Button>
+        </Modal.Header>
+        <Modal.Body>
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>Approval Stage</th>
+                <th>Name of Officer</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>{extractName(idcheck.approval1)}</td>
+                <td>{determineAction(idcheck.approval1)}</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>{extractName(idcheck.approval2)}</td>
+                <td>{determineAction(idcheck.approval2)}</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>{extractName(idcheck.approval3)}</td>
+                <td>{determineAction(idcheck.approval3)}</td>
+              </tr>
+              {/* Add more rows as needed */}
+            </tbody>
+          </Table>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCheckStatusModalClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </tr>
               ))
             ) : (
               <tr style={{ color: "white" }}>
