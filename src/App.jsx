@@ -14,6 +14,7 @@ import AddNewRule from './components/AddNewRule';
 import ChatBot from './components/chatBot';
 import { createContext, useState,useReducer } from 'react';
 import { intialState,reducer } from './reducer/useReducer';
+import Profile from './components/Profile';
 
 // import { Edit } from '@mui/icons-material';
 export const UserContext=createContext();
@@ -33,6 +34,7 @@ const App = () => {
           <Route path="/compare/:id" element={<CompareChanges/>}/>
           <Route path="/addNewRule" element={<AddNewRule/>} />
           <Route path="/searchByAI" element={<ChatBot/>} />
+          <Route path="/profile" element={<Profile/>} />
           
           <Route path="/admindashboard" element={<Admindashboard/>}/> 
         </Routes>
