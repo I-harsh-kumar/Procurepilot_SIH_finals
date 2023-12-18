@@ -20,6 +20,8 @@ import Delete from "./components/Delete"
 import Guidelines from './components/Guidelines';
 import Guidelinesadmin from './components/Guidelinesadmin';
 import RecentGuidelines from './components/RecentGuidelines';
+import VersionContol from './components/VersionContol';
+import GetScore from './components/GetScore';
 
 
 // import { Edit } from '@mui/icons-material';
@@ -45,11 +47,12 @@ const App = () => {
           <Route path="/admin/guidelines" element={<Guidelinesadmin/>}/>
 
           <Route path="/profile" element={<Profile/>} />
-          
+          <Route path="/getscore" element={<GetScore/>}/>
           <Route path="/admindashboard" element={<Admindashboard/>}/> 
           <Route path="/recentguidelines" element={<RecentGuidelines/>}/> 
 
           <Route path="/users/guidelines" element={<Guidelines/>}/>
+          <Route path="/admin/versionControl" element={<VersionContol/>}/>
         </Routes>
        
         <ToastContainer />

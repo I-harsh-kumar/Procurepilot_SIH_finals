@@ -1,42 +1,41 @@
 import React, { useState, useContext } from "react";
-import Axios from "axios";
+
 import "./css/login.css";
-import { useNavigate } from "react-router-dom";
-// import { Link } from '@mui/icons-material';
-import { Link } from "react-router-dom";
-import { UserContext } from "../App";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 
 const Profile = () => {
-  const navigate = useNavigate();
-  const { state, dispatch } = useContext(UserContext);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const getName=()=>{
+    const userInfoString = localStorage.getItem('userInfo');
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
-    try {
-      const { data } = await Axios.post("/api/users/signin", {
-        email,
-        password,
-      });
-      localStorage.setItem("userInfo", JSON.stringify(data));
-      dispatch({ type: "USER", payload: true });
-      console.log("user sucessfully logged in");
-      toast.success("user sucessfully logged in");
-      navigate("/");
-    } catch (err) {
-      console.log(err);
-      toast.error("Error in logging user");
-    }
-  };
+// Parse the userInfo string into a JavaScript object
+const userInfo = JSON.parse(userInfoString);
+
+// Access the "name" property
+const userName = userInfo.name;
+
+// Log or use the userName variable
+// console.log(userName);
+    return userName;
+  }
+  const getEmail=()=>{
+    const userInfoString = localStorage.getItem('userInfo');
+
+// Parse the userInfo string into a JavaScript object
+const userInfo = JSON.parse(userInfoString);
+
+// Access the "name" property
+const userName = userInfo.email;
+
+// Log or use the userName variable
+console.log(userName);
+    return userName;
+  }
   return (
     <div className="container" >
       <div class="d-flex  justify-content-center align-items-center flex-column m-5 w-100">
         <div>
-          <h3>Name-{}</h3>
-          <h3>Email-{}</h3>
+          <h3>Name-{getName()}</h3>
+          <h3>Email-{getEmail()}</h3>
         </div>
         {/* <div
       style={{

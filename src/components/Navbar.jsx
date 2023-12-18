@@ -43,10 +43,12 @@ const Navbar = () => {
         <>
         <Link to="/admin/guidelines">Manage Repository</Link>
           
-        <a href="#">Version Control</a>
+        <Link to="/admin/versionControl">Version Control</Link>
         <Link to="/users/guidelines">Guidelines</Link>
+        {/* /getscore */}
+        <Link to="/getscore">Get Tender Score</Link>
 
-        <a href="#">Get Tender Score</a>
+        {/* <a href="#">Get Tender Score</a>   */}
     <Link to="/recentguidelines">Recent Guidelines</Link>
 
      
