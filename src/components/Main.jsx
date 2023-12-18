@@ -76,9 +76,9 @@ const Main = () => {
     <div class="swiper-wrapper">
       {/* <!-- Content 1 --> */}
       <div class="swiper-slide slide-one">
-        <div>
+        <div  className='mb-3'>
           <h2 style={{textAlign:"center"}}>Centralized Repository</h2>
-          <p>
+          <p style={{textAlign:"center"}}>
           procurepiolet organizes all essential documents and regulations in one place for easy access.
           </p>
           {/* <a href="#">View Detail</a> */}
@@ -96,9 +96,9 @@ const Main = () => {
       </div>
       {/* <!-- Content 3 --> */}
       <div class="swiper-slide slide-three">
-        <div>
+        <div  className='mb-3'>
           <h2 style={{textAlign:"center"}}>Advance Search & Filter</h2>
-          <p>
+          <p style={{textAlign:"center"}}>
           procurepiolet effortlessly find specific documents through powerful search and custom filters.
           </p>
           {/* <a href="#">View Detail</a> */}
@@ -106,9 +106,9 @@ const Main = () => {
       </div>
       {/* <!-- Content 4 --> */}
       <div class="swiper-slide slide-four">
-        <div>
+        <div  className='mb-3'>
           <h2 style={{textAlign:"center"}}>Interactive Chatbots</h2>
-          <p>
+          <p style={{textAlign:"center"}}>
           Unlock knowledge effortlessly! Our interactive chatbox seamlessly searches through our repository and knowledge base, delivering accurate answers to your queries. Experience a smarter way to access information and stay informed.
           </p>
           {/* <a href="#">View Detail</a> */}
