@@ -16,6 +16,9 @@ import { createContext, useState,useReducer } from 'react';
 import { intialState,reducer } from './reducer/useReducer';
 // import { Delete } from '@mui/icons-material';
 import Delete from "./components/Delete"
+import Guidelines from './components/Guidelines';
+import Guidelinesadmin from './components/Guidelinesadmin';
+
 
 // import { Edit } from '@mui/icons-material';
 export const UserContext=createContext();
@@ -37,8 +40,11 @@ const App = () => {
           <Route path="/compare/:id" element={<CompareChanges/>}/>
           <Route path="/addNewRule" element={<AddNewRule/>} />
           <Route path="/searchByAI" element={<ChatBot/>} />
+          <Route path="/admin/guidelines" element={<Guidelinesadmin/>}/>
+
           
           <Route path="/admindashboard" element={<Admindashboard/>}/> 
+          <Route path="/users/guidelines" element={<Guidelines/>}/>
         </Routes>
        
         <ToastContainer />

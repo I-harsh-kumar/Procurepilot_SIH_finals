@@ -29,17 +29,20 @@ const Navbar = () => {
     <>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div>
-      <div id="mySidenav" className={`sidenav ${isSidebarOpen ? 'open' : ''}`}>
+      <div id="mySidenav" className={`sidenav ${isSidebarOpen ? 'open' : ''}`} style={{zIndex:"9"}}>
       <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
         {state?<>
-          <a href="#">Manage Repository</a>
+          {/* <a href="#">Manage Repository</a> */}
+        <Link to="/admin/guidelines">Manage Repository</Link>
+
         <a href="#">Version Control</a>
-        <a href="#">Guidelines</a>
+        <Link to="/users/guidelines">Guidelines</Link>
+
         <a href="#">Get Tender Score</a>
         <a href="#">Recent Guidelines</a>
         <a href="#">Profile</a>
         </>:<>
-        <a href="#">Guidelines</a>
+        <Link to="/users/guidelines">Guidelines</Link>
         <a href="#">Recent Guidelines</a>
         </>}
         {/* <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
