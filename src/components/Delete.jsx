@@ -6,6 +6,9 @@ const Delete = () => {
   const [rule, setRule] = useState(null);
   const { id } = useParams();
 
+
+
+  
   const [editedRule, setEditedRule] = useState({
     rule: '',
     heading: '',
