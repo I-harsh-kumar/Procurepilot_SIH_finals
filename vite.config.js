@@ -18,6 +18,7 @@ export default defineConfig({
         target: useitforlocal,
         rewrite: (path) => path.replace(/^\/api\/approval\/updateApproval\//, '/api/approval/updateApproval/'), // Add the dynamic part here
       },
+      '/api/gfr/getNewData': useitforlocal,
       '/api/gfr/edit': {
         target: useitforlocal,
         rewrite: (path) => path.replace(/^\/api\/gfr\/edit\//, '/api/gfr/edit/'), // Add the dynamic part here

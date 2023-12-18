@@ -70,6 +70,19 @@ gfrRouter.post(
       }
     })
   );
+  gfrRouter.get('/getNewData', async (req, res) => {
+    try {
+      // Fetch data, sort by createdAt date in descending order, and limit to 3 items starting from the 2nd item
+      const data = await GFR.find()
+        .sort({ updatedAt: -1 })
+        // .skip(2)
+        .limit(3);
+      res.json(data);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
   
 
 module.exports=gfrRouter;

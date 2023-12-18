@@ -14,6 +14,7 @@ import AddNewRule from './components/AddNewRule';
 import ChatBot from './components/chatBot';
 import { createContext, useState,useReducer } from 'react';
 import { intialState,reducer } from './reducer/useReducer';
+import Profile from './components/Profile';
 // import { Delete } from '@mui/icons-material';
 import Delete from "./components/Delete"
 import Guidelines from './components/Guidelines';
@@ -43,6 +44,7 @@ const App = () => {
           <Route path="/searchByAI" element={<ChatBot/>} />
           <Route path="/admin/guidelines" element={<Guidelinesadmin/>}/>
 
+          <Route path="/profile" element={<Profile/>} />
           
           <Route path="/admindashboard" element={<Admindashboard/>}/> 
           <Route path="/recentguidelines" element={<RecentGuidelines/>}/> 

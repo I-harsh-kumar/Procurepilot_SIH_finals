@@ -10,47 +10,91 @@ const Navbar = () => {
   const navigate = useNavigate();
   const {state,dispatch} = useContext(UserContext);
   const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const handleLogout = () =>{
     localStorage.removeItem('userInfo');
     dispatch({type:"USER",payload:false});
-    console.log("x:",state);
+    
     toast.success('user successfully Logged Out');
     navigate('/login');
   };
-
+  const cheackISLoggedIn=()=>{
+    const x=localStorage.getItem('myState');
+     console.log("x:",x);
+    return x;
+  }
+  useEffect(() => {
+    cheackISLoggedIn();
+    Sidenav();
+  }, [localStorage.getItem('myState')])
+  
   const openNav = () => {
     setSidebarOpen(true);
   };
-
   const closeNav = () => {
     setSidebarOpen(false);
   };  
+  const Sidenav=()=>{
+    const x=cheackISLoggedIn();
+    console.log("x2",x);
+    if(x == 'true'){
+      console.log("x3",x);
+      return(
+        <>
+          <a href="#">Manage Repository</a>
+        <a href="#">Version Control</a>
+        <Link to="/users/guidelines">Guidelines</Link>
+
+        <a href="#">Get Tender Score</a>
+        <a href="#">Recent Guidelines</a>
+        <Link to="/profile">Profile</Link>
+        </>
+      )
+    }
+    else{
+      return(
+        <>
+        <a href="#">Guidelines</a>
+        <a href="#">Recent Guidelines</a>
+        </>
+      )
+    }
+  }
+  const Dashboard=()=>{
+const x=cheackISLoggedIn();
+    if(x == 'true'){
+      return(
+        <li class="nav-item active">
+        <Link to="/admindashboard" className="nav-link">
+    Dashboard
+  </Link>
+        </li>
+      )
+    }
+  }
+  const RenderLogin=()=>{
+    const x=cheackISLoggedIn();
+    if(x=='true'){
+      return(
+       
+        <button type="button" class="btn btn-outline-info " onClick={handleLogout} >Logout</button>
+      )
+    }
+    else{
+      return(
+        <Link to="/login" className="btn btn-outline-info my-2 my-sm-0 ">
+        Login
+      </Link>
+      )
+    }
+  }
   return (
     <>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div>
-      <div id="mySidenav" className={`sidenav ${isSidebarOpen ? 'open' : ''}`} style={{zIndex:"9"}}>
+      <div id="mySidenav" className={`sidenav ${isSidebarOpen ? 'open' : ''}`}>
       <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
-        {state?<>
-          {/* <a href="#">Manage Repository</a> */}
-        <Link to="/admin/guidelines">Manage Repository</Link>
-        <Link to="/version">Version Control</Link>
-        <Link to="/users/guidelines">Guidelines</Link>
-
-        <a href="#">Get Tender Score</a>
-        <a href="#">Recent Guidelines</a>
-        <a href="#">Profile</a>
-        </>:<>
-        <Link to="/users/guidelines">Guidelines</Link>
-        <Link to="/recentguidelines">Recent Guidelines</Link> 
-        </>}
-        {/* <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
-        <a href="#">Manage Repository</a>
-        <a href="#">Version Control</a>
-        <a href="#">Guidelines</a>
-        <a href="#">Get Tender Score</a>
-        <a href="#">Recent Guidelines</a>
-        <a href="#">Profile</a> */}
+       <Sidenav/>
       </div>
 
       <span style={{ fontSize: '20px', cursor: 'pointer',color:"#5bc0de" }} onClick={openNav}>&#9776;</span>
@@ -73,11 +117,7 @@ const Navbar = () => {
             
             <Link className="nav-link" to="/admin">Admin <span className="sr-only">(current)</span></Link>
           </li> */}
-          {state? <li class="nav-item active">
-      <Link to="/admindashboard" className="nav-link">
-  Dashboard
-</Link>
-      </li>:<li></li>}
+      <Dashboard/>
      
       <li class="nav-item">
       {/* <Link to="/searchByAI" className="nav-link">
@@ -100,16 +140,7 @@ const Navbar = () => {
       </li> */}
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      {/* <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/> */}
-      {/* <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Signup</button> */}
-      {state?
-            <button type="button" class="btn btn-outline-info " onClick={handleLogout} >Logout</button>:
-        <Link to="/login" className="btn btn-outline-info my-2 my-sm-0 ">
-            Login
-          </Link>
-          }
-     
-         
+              <RenderLogin/>
     </form>
   </div>
 </nav>
