@@ -30,6 +30,8 @@ const GetScore = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [title, setTitle] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [submitButton, setSubmitButton] = useState(false);
+  const [score, setScore] = useState(0);;
   const [userResponses, setUserResponses] = useState(Array(10).fill(null));
 
   const handleNext = () => {
@@ -70,10 +72,22 @@ const GetScore = () => {
   const handleSubmit = () => {
     // Add your logic for handling the form submission here
     const x=calculateScore();
-    console.log("score:",x/10*100,"%");
-    alert('Form submitted! your score is:',x);
+    setSubmitButton(true);
+    setScore(x/10*100);
+    alert('Form submitted!');
+    return x/10*100;
   };
 
+  const getYesQuestions = () => {
+    return userResponses
+      .map((response, index) => (response === 1 ?questions[index]  : null))
+      .filter(Boolean);
+  };
+  const getYesQuestionsNo = () => {
+    return userResponses
+      .map((response, index) => (response === 0 ? questions[index]  : null))
+      .filter(Boolean);
+  };
   const isLastQuestion = currentQuestion === questions.length - 1;
 
   return (
@@ -120,6 +134,26 @@ const GetScore = () => {
           )}
         </ul>
       </nav>
+      {
+        submitButton?(
+          <div>
+          <h3>Quiz Results</h3>
+          <p>Your score is: {score} %</p>
+          <p>Your submitted answers are:</p>
+          <ul>
+            {getYesQuestions().map((question) => (
+              <li key={question}>{question}</li>
+            ))}
+          </ul>
+          <p>Yoy have to work on following points:</p>
+          <ul>
+            {getYesQuestionsNo().map((question) => (
+              <li key={question}>{question}</li>
+            ))}
+          </ul>
+        </div>
+        ):''
+      }
     </div>
   );
 };
