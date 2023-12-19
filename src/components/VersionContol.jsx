@@ -453,13 +453,15 @@ function VersionContol() {
       // Implement your row click logic here
     }
   return (
-    <div className='container'>
+    <div className='container-fluid'>
             
      
-      <div className="col-sm-12 col-lg-12">
-      <div className='approval-control-main-div' style={{ }}>
-  <h4 className='mb-3 mt-3' style={{ fontWeight: "bold" }}>Approval Control</h4>
-  <div className="search-container mt-3 approval-control-main-div"  style={{}}>
+      <div className="col-sm-12 col-lg-12 ">
+  <h3 className='mb-3 mt-3 text-center ' style={{ fontWeight: "bold" }}>Approval Control</h3>
+  <div className='text-center'>
+      <div className=' mt-4 mb-4' style={{ }}>
+        
+  <div className=" mt-3"  style={{}}>
   <div>
               <input
                 type="text"
@@ -467,7 +469,7 @@ function VersionContol() {
                 onChange={(e) => setSearchCategory1(e.target.value)}
                 placeholder="Search by Category"
                 className="search-input mx-4"
-                style={{ width: "90%" }}
+                style={{ width: "50%" }}
               />
             </div>
             <div>
@@ -477,7 +479,7 @@ function VersionContol() {
                 onChange={(e) => setSearchTag1(e.target.value)}
                 placeholder="Search by Tag"
                 className="search-input mx-4"
-                style={{ width: "90%" }}
+                style={{ width: "50%" }}
               />
             </div>
             <div>
@@ -487,37 +489,40 @@ function VersionContol() {
                 onChange={(e) => setSearchRule1(e.target.value)}
                 placeholder="Search by Rule Number"
                 className="search-input mx-4"
-                style={{ width: "90%" }}
+                style={{ width: "50%" }}
               />
             </div>
    
    
    
   </div>
-  <button onClick={handleSearch1} className="btn btn-primary mb-3 mt-2  ">
+  </div>
+  <button onClick={handleSearch1} className="btn btn-primary mb-3 mt-3 mx-2 ">
             Filter
           </button>
           <button
             onClick={handleClear1}
-            className="btn btn-primary mb-3 mt-2 mx-3"
+            className="btn btn-primary mb-3 mt-3 mx-2"
           >
             Clear Filter
           </button>
 </div>
 
-          <table className="table">
+
+          <table className="table" style={{ overflowY: 'auto', maxHeight: '400px' }}>
             <thead>
-              <tr>
-                <th scope="col">Rule</th>
-                <th scope="col">Title</th>
+           
+              <tr style={{ backgroundColor: '#343a40', color: 'white' }}>
+                <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Rule</th>
+                <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Title</th>
                 {/* <th scope="col">Description</th> */}
-                <th scope="col">Category</th>
-                <th scope="col">Updated At</th>
-                <th scope="col">Updated By</th>
-                <th scope="col">Changes</th>
-                <th scope="col">Action 1</th>
-                <th scope="col">Action 2</th>
-                <th scope="col">Approval</th>
+                <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Category</th>
+                <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Updated At</th>
+                <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Updated By</th>
+                <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Changes</th>
+                <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Action 1</th>
+                <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Action 2</th>
+                <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Approval</th>
 
 
               </tr>

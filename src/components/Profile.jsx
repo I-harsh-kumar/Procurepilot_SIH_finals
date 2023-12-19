@@ -32,10 +32,18 @@ console.log(userName);
   }
   return (
     <div className="container" >
-      <div class="d-flex  justify-content-center align-items-center flex-column m-5 w-100">
+   <h3 className="mt-5 text-center">User Profile</h3>
+      <div class="" style={{marginTop:"130px"}}>
+      <div className="row">
+        <div className="col-sm-12 col-lg-10">
         <div>
-          <h3>Name-{getName()}</h3>
-          <h3>Email-{getEmail()}</h3>
+          <h3><b>Name-{getName()}</b></h3>
+          <h3><b>Email-{getEmail()}</b></h3>
+        </div>
+        </div>
+        <div className="col-sm-12 col-lg-2 text-center">
+        <img src="/public/Frame.png"></img>
+        </div>
         </div>
         {/* <div
       style={{
@@ -48,8 +56,8 @@ console.log(userName);
       }}
     ></div> */}
    <hr class="border border-danger border-2 opacity-50"/>
-    
-        <div class="w-50">
+        
+        <div class="w-100">
           <p className="mt-2 mb-2 text-end">
             You can approves requisitions, manages guideline repository,
             contracts, and vendor relationships, responsible for enforcement of

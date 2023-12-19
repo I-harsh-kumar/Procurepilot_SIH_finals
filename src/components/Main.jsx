@@ -58,7 +58,7 @@ const Main = () => {
   {/* <!-- Side infos --> */}
   <div class="side-info">
     
-    <h1>Procurepilot</h1>
+    <h2>Procurepilot</h2>
     <span>Charting Compliance, Empowering Governance</span>
 
     {/* <hr /> */}

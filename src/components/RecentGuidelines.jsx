@@ -22,19 +22,19 @@ const RecentGuidelines = () => {
    
     <div className='container mt-5 mb-5'>
     <h3 style={{background:"white"}} className='mt-3 mb-3'>Recently Uploaded Documents</h3>
-    <h3 style={{background:"white"}}>Recently Uploaded Documents</h3>
+    {/* <h3 style={{background:"white"}}>Recently Uploaded Documents</h3> */}
        
        {newData.map((item, index) => (
                <div className="custom-table" key={index}>
                  <br />
                  <div className="table-row">
-                   <div className="table-cell" style={{ width: "70%" }}>
+                   <div className="table-cell" style={{ width: "80%" }}>
                      <div>
                        <u>{item.heading}</u>
                      </div>
                      <div>
                        {/* {item.description} */}
-                       {item.description.split(" ").slice(0, 8).join(" ")}{" "}
+                       {item.description.split(" ").slice(0, 70).join(" ")}{" "}
                          {item.description.split(" ").length > 8 ? "..." : ""}
                        </div>
                    </div>

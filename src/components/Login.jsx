@@ -81,13 +81,13 @@ const Login = () => {
     </button> 
     </form>
                   <p style={{marginTop: "10%"}}>Dont have an account? <Link to="/signup" style={{textDecoration: "underline"}}>Signup</Link> </p>
-                
+                <div className='mt-5'>
                   <div style={{width:"200px", height:"200px", borderRadius:"50%", border: "0.3px solid #1c1c1c", backgroundColor:"black", position:"absolute",right:'-100px',bottom:'-100px' }}></div> 
                   <div style={{width:"200px", height:"200px", borderRadius:"50%", border: "0.3px solid #1c1c1c", backgroundColor:"none", position:"absolute",right:'-100px',bottom:'-90px' }}></div> 
                   <div style={{width:"200px", height:"200px", borderRadius:"50%", border: "0.3px solid #1c1c1c", backgroundColor:"none", position:"absolute",right:'-100px',bottom:'-80px' }}></div> 
                   <div style={{width:"200px", height:"200px", borderRadius:"50%", border: "0.3px solid #1c1c1c", backgroundColor:"none", position:"absolute",right:'-100px',bottom:'-70px' }}></div> 
 
-                
+                  </div>
                   
                   {/* <div className="responsive-circle rcircle1"></div>
                   <div className="responsive-circle rcircle2"></div>
