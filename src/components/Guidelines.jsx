@@ -455,6 +455,8 @@ useEffect(() => {
   };
   return (
     <div className="container-fluid">
+         <h2 className='text-center mt-3'><b>Guidelines</b></h2>
+
       <div className="row mt-5">
         <div className="col-sm-12 col-lg-8">
           <div className="search-container">
@@ -525,7 +527,6 @@ useEffect(() => {
 
    </div>
    <div className="row mt-5">
-   
         <div className="col-sm-12 col-lg-12" style={{ overflowY: 'auto', maxHeight: '400px' }}>
           <table className="table">
           <thead>

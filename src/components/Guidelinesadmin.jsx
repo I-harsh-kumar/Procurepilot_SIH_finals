@@ -474,6 +474,8 @@ useEffect(() => {
 
   return (
     <div className="container-fluid">
+         <h2 className='text-center mt-3'><b>Approval requests</b></h2>
+   
       <div className="row mt-5">
         <div className="col-sm-12 col-lg-12">
           <div className="search-container">

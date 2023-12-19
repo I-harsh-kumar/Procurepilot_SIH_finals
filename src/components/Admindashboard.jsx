@@ -529,13 +529,23 @@ useEffect(() => {
         <div className="col-sm-12 col-lg-8" style={{ overflowY: 'auto', maxHeight: '400px' }}>
           <table className="table">
             <thead>
-              <tr>
-                <th scope="col">Rule Number</th>
-                <th scope="col">Title</th>
-                <th scope="col">Description</th>
-                <th scope="col">Category</th>
-                <th scope="col">Action</th>
-              </tr>
+            <tr style={{ backgroundColor: '#343a40', color: 'white' }}>
+        <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>
+          Rule Number
+        </th>
+        <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>
+          Title
+        </th>
+        <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1 , backgroundColor: '#454b52',color:"White"}}>
+          Description
+        </th>
+        <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1 , backgroundColor: '#454b52',color:"White"}}>
+          Category
+        </th>
+        <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1 , backgroundColor: '#454b52',color:"White"}}>
+          Action
+        </th>
+      </tr>
             </thead>
             <tbody>
             {searchResults.length > 0 ? (
@@ -639,10 +649,10 @@ useEffect(() => {
         </div>
       </div>
       <div className="col-sm-12 col-lg-12">
-      <div className='approval-control-main-div' style={{ }}>
-  <h2 className='mb-3 mt-3' style={{ fontWeight: "bold" }}>Approval Control</h2>
+      <div className='' style={{ }}>
+  <h2 className='mb-5 mt-2   text-center' style={{ fontWeight: "bold" }}>Approval Control</h2>
   <div className="search-container mt-3 approval-control-main-div"  style={{}}>
-  <div>
+  {/* <div>
               <input
                 type="text"
                 value={searchCategory1}
@@ -671,12 +681,12 @@ useEffect(() => {
                 className="search-input mx-4"
                 style={{ width: "90%" }}
               />
-            </div>
+            </div> */}
    
    
    
   </div>
-  <button onClick={handleSearch1} className="btn btn-primary mb-3 mt-2">
+  {/* <button onClick={handleSearch1} className="btn btn-primary mb-3 mt-2">
             Filter
           </button>
           <button
@@ -684,22 +694,22 @@ useEffect(() => {
             className="btn btn-primary mb-3 mt-2 mx-3"
           >
             Clear Filter
-          </button>
+          </button> */}
 </div>
 
           <table className="table">
             <thead>
-              <tr>
-                <th scope="col">Rule</th>
-                <th scope="col">Title</th>
+            <tr style={{ backgroundColor: '#343a40', color: 'white' }}>
+                <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Rule</th>
+                <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Title</th>
                 {/* <th scope="col">Description</th> */}
-                <th scope="col">Category</th>
-                <th scope="col">Updated At</th>
-                <th scope="col">Updated By</th>
-                <th scope="col">Changes</th>
-                <th scope="col">Action 1</th>
-                <th scope="col">Action 2</th>
-                <th scope="col">Approval</th>
+                <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Category</th>
+                <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Updated At</th>
+                <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Updated By</th>
+                <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Changes</th>
+                <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Action 1</th>
+                <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Action 2</th>
+                <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Approval</th>
 
 
               </tr>

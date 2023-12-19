@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Edit = () => {
   const [rule, setRule] = useState(null);
@@ -188,8 +189,7 @@ const Edit = () => {
                 className="form-control"
               />
             </div>
-
-            <button onClick={handleSave} type="submit" style={{float:"right"}} className="btn btn-success mb-4">Request for Approval</button>
+ <button onClick={handleSave} type="submit" style={{float:"right"}} className="btn btn-success mb-4">Request for Approval</button>
           </blockquote>
         </div>
         </form>
