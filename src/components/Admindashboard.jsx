@@ -705,14 +705,14 @@ useEffect(() => {
                 {/* <th scope="col">Description</th> */}
                 <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Category</th>
                 <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Updated At</th>
-                <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Updated By</th>
+                {/* <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Updated By</th> */}
                 <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Changes</th>
                 <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Action 1</th>
                 <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Action 2</th>
                 <th scope="col" style={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#454b52',color:"White"}}>Approval</th>
 
 
-              </tr>
+              </tr> 
             </thead>
             <tbody>
             {approvalData.length > 0 ? (
@@ -741,9 +741,9 @@ useEffect(() => {
         {row.editAt}
         
       </td>
-      <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
+      {/* <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
         {row.editBy}
-      </td>
+      </td> */}
       <td data-label="UpdatedBy" style={{ wordWrap: 'break-word' }}>
   {row.isDelete ? (
     // Render text or other content when isDelete is true
